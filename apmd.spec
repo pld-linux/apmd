@@ -2,7 +2,7 @@ Summary:	Advanced Power Management (APM) utilities for notebooks.
 Summary(pl):	Obs³uga zarz±dzania enerig± (APM) dla notebooków.
 Name:		apmd
 Version:	3.0
-Release:	3
+Release:	4
 License:	GPL
 Group:		Utilities/System
 Group(pl):	Narzêdzia/System
@@ -30,6 +30,8 @@ koñcz±cej siê baterii, jak równie¿ automatyczne reagowanie na zmiany.
 Summary:	Header files for developing APM applications
 Summary(pl):	Pliki nag³ówkowe do tworzenia aplikacji korzystaj±cych z APM
 Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
+Group(fr):	Development/Librairies
 Requires:	%{name} = %{version}
 
 %description devel
@@ -38,28 +40,18 @@ Header files necessary for developing APM applications
 %description devel -l pl
 Pliki nag³ówkowe niezbêdne do tworzenia aplikacji korzystaj±cych z APM
 
-%package static
-Summary:	APM static libraries
-Summary(pl):	Biblioteki statyczne APM
-Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
-
-%description static
-Static libraries for developing APM applications
-
-%description static -l pl
-Biblioteki statyczne do tworzenia aplikacji korzystaj±cych z APM
-
 %package -n xapm
 Summary:	XFree86 APM monitoring and management tool
 Summary(pl):	Narzêdzie do monitorowania i zarz±dzania APMem pod XFree86
 Group:		X11/Utilities/System
+Group(pl):	X11/Narzêdzia/System
 
 %description -n xapm
 xapm is an XFree86 version of console APM client - "apm".
 
 %description -n xapm -l pl
-xapm jest wersj± konsolowego klienta APM - "apm", przenaczon± dla XFree86
+xapm jest wersj± konsolowego klienta APM - "apm", przenaczon± dla
+XFree86
 
 %prep
 %setup -q -n apmd
@@ -67,7 +59,7 @@ xapm jest wersj± konsolowego klienta APM - "apm", przenaczon± dla XFree86
 %build
 make CFLAGS="$RPM_OPT_FLAGS" LDFLAGS=-s APMD_PROXY_DIR=%{_sbindir}
 make -C xbattery clean
-make CCOPTIONS="$RPM_OPT_FLAGS" -C xbattery
+make CCOPTIONS="$RPM_OPT_FLAGS" LOCAL_LDFLAGS="-s" -C xbattery
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -76,25 +68,25 @@ install -d $RPM_BUILD_ROOT%{_prefix}/X11R6/{bin,man/man1}
 install -d $RPM_BUILD_ROOT%{_mandir}/{man1,man8}
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig
-install apm 	$RPM_BUILD_ROOT%{_bindir}
-install apmd 	$RPM_BUILD_ROOT%{_sbindir}
+install apm $RPM_BUILD_ROOT%{_bindir}
+install apmd $RPM_BUILD_ROOT%{_sbindir}
 install apmsleep $RPM_BUILD_ROOT%{_bindir}
-install tailf 	$RPM_BUILD_ROOT%{_bindir}
+install tailf $RPM_BUILD_ROOT%{_bindir}
 install on_ac_power $RPM_BUILD_ROOT%{_bindir}
-install xapm 	$RPM_BUILD_ROOT%{_prefix}/X11R6/bin
+install xapm $RPM_BUILD_ROOT%{_prefix}/X11R6/bin
 install apmd_proxy $RPM_BUILD_ROOT%{_sbindir}
-install apm.1 	$RPM_BUILD_ROOT%{_mandir}/man1/
-install apmd.8 	$RPM_BUILD_ROOT%{_mandir}/man8/
-install xapm.1 	$RPM_BUILD_ROOT%{_prefix}/X11R6/man/man1/xapm.1x
-install tailf.1  $RPM_BUILD_ROOT%{_mandir}/man1/
+install apm.1 $RPM_BUILD_ROOT%{_mandir}/man1/
+install apmd.8 $RPM_BUILD_ROOT%{_mandir}/man8/
+install xapm.1 $RPM_BUILD_ROOT%{_prefix}/X11R6/man/man1/xapm.1x
+install tailf.1 $RPM_BUILD_ROOT%{_mandir}/man1/
 install apmsleep.1 $RPM_BUILD_ROOT%{_mandir}/man1
 install libapm.a $RPM_BUILD_ROOT%{_libdir}
 install apm.h $RPM_BUILD_ROOT%{_includedir}
-install $RPM_SOURCE_DIR/apmd.init $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d/apmd
-install -s xbattery/xbattery $RPM_BUILD_ROOT%{_prefix}/X11R6/bin
+install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d/apmd
+install xbattery/xbattery $RPM_BUILD_ROOT%{_prefix}/X11R6/bin
 install xbattery/xbattery.man $RPM_BUILD_ROOT%{_prefix}/X11R6/man/man1/xbattery.1x
 
-cat <<'EOF' >$RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/apmd
+cat << EOF > $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/apmd
 APMD_OPTIONS="-p 10 -w 5 -W -P %{_sbindir}/apmd_proxy"
 EOF
 
@@ -131,11 +123,11 @@ fi
 %config %{_sysconfdir}/sysconfig/apmd
 
 %files devel
+%defattr(644,root,root,755)
 %{_includedir}/*
-
-%files static
 %{_libdir}/*.a
 
 %files -n xapm
+%defattr(644,root,root,755)
 %{_prefix}/X11R6/man/man*/*
 %attr(755,root,root) %{_prefix}/X11R6/bin/*
