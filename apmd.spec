@@ -6,7 +6,7 @@ Release:	2
 Epoch:		1
 License:	GPL
 Group:		Utilities/System
-Group(pl):	Narzêdzia/system
+Group(pl):	Narzêdzia/System
 Source:		http://www.worldvisions.ca/~apenwarr/apmd/%{name}-%{version}.tar.gz
 Source1:	apmd.init
 URL:		http://www.worldvisions.ca/~apenwarr/apmd/
