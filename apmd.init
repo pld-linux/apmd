@@ -1,11 +1,11 @@
 #!/bin/sh
 #
-# chkconfig: 2345 05 92
-# description: apmd is used for monitoring batery status and logging it via \
-#	syslog(8). It can also be used for shutting down the machine when \
-#	the battery is low.
-# processname: apmd
-# config: /etc/sysconfig/apmd
+# chkconfig:	2345 05 92
+# description:	apmd is used for monitoring batery status and logging it via \
+#		syslog(8). It can also be used for shutting down the machine when \
+#		the battery is low.
+# processname:	apmd
+# config:	/etc/sysconfig/apmd
 
 # Source function library.
 . /etc/rc.d/init.d/functions
@@ -20,13 +20,13 @@ CONFIG=/etc/sysconfig/apmd
 # See how we were called.
 case "$1" in
   start)
-	show "Starting up APM daemon: "
+	msg_starting APM
 	[ -r "$CONFIG" ] && . "$CONFIG"
 	daemon /usr/sbin/apmd "$APMD_OPTIONS"
 	touch /var/lock/subsys/apmd
 	;;
   stop)
-	show "Shutting down APM daemon: "
+	msg_stopping APM
 	killproc apmd
 	rm -f /var/lock/subsys/apmd
 	;;
@@ -37,8 +37,7 @@ case "$1" in
 	$0 stop
 	$0 start
 	;;
-	
   *)
-	echo "Usage: apmd {start|stop|status|restart|reload}"
+	msg_Usage "$0 {start|stop|status|restart|reload}"
 	exit 1
 esac
