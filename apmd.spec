@@ -63,8 +63,8 @@ make CCOPTIONS="$RPM_OPT_FLAGS" LOCAL_LDFLAGS="-s" -C xbattery
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_bindir},%{_includedir},%{_libdir},%{_sbindir}} \
-	$RPM_BUILD_ROOT%{_prefix}/X11R6/{bin,man/man1}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_includedir},%{_libdir},%{_sbindir}} \
+	$RPM_BUILD_ROOT%{_prefix}/X11R6/{bin,man/man1} \
 	$RPM_BUILD_ROOT{%{_mandir}/man{1,8},/etc/{rc.d/init.d,sysconfig}}
 
 install apm apmsleep tailf on_ac_power $RPM_BUILD_ROOT%{_bindir}
