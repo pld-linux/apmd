@@ -1,8 +1,10 @@
 Summary:	Advanced Power Management (APM) utilities for notebooks
 Summary(pl):	Obs³uga zarz±dzania enerig± (APM) dla notebooków
+Summary(pt_BR):	Utilitários para APM (Gerenciamento Avancado de Energia)
+Summary(es):	Utilitarios para APM (Gestión Avanzado de Energía)
 Name:		apmd
-Version:	3.0
-Release:	6
+Version:	3.0.2
+Release:	1
 License:	GPL
 Group:		Applications/System
 Group(de):	Applikationen/System
@@ -27,9 +29,25 @@ programami pomocniczymi. Dziêki nim mo¿liwe jest monitorowanie stanu
 zasilania Twojego notebooka i ostrzeganie wszystkich u¿ytkowników o
 koñcz±cej siê baterii, jak równie¿ automatyczne reagowanie na zmiany.
 
+%description -l pt_BR
+Utilitários e servidor para gerenciamento avançado de energia (APM). Ele
+verifica a bateria de seu notebook e avisa aos usuários que ele está com pouca
+carga.
+
+Foi adicionado um patch nao oficial para parar os soquetes PCMCIA antes de uma
+suspensao de energia.
+
+%description -l es
+Utilitarios y servidor para gestión avanzada de energía (APM). Verifica la
+batería de tu notebook y avisa a los usuarios cuando la carga es poca.  Fue
+adicionado un patch no oficial para parar los enchufes PCMCIA antes de una
+suspensión de energía.
+
 %package devel
 Summary:	Header files for developing APM applications
 Summary(pl):	Pliki nag³ówkowe do tworzenia aplikacji korzystaj±cych z APM
+Summary(pt_BR):	Arquivos de inclusão e bibliotecas para o apmd em versão estática
+Summary(es):	Archivos de inclusión y bibliotecas para apmd en versión estática
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
@@ -42,6 +60,12 @@ Header files necessary for developing APM applications.
 %description devel -l pl
 Pliki nag³ówkowe niezbêdne do tworzenia aplikacji korzystaj±cych z
 APM.
+
+%description -l pt_BR devel
+Arquivos de inclusão e bibliotecas para o apmd em versão estática
+
+%description -l es devel
+Archivos de inclusión y bibliotecas para apmd en versión estática
 
 %package -n xapm
 Summary:	XFree86 APM monitoring and management tool
@@ -72,12 +96,12 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_includedir},%{_libdir},%{_sbindir}} \
 	$RPM_BUILD_ROOT%{_prefix}/X11R6/{bin,man/man1} \
 	$RPM_BUILD_ROOT{%{_mandir}/man{1,8},%{_sysconfdir}/{rc.d/init.d,sysconfig}}
 
-install apm apmsleep tailf on_ac_power $RPM_BUILD_ROOT%{_bindir}
+install apm apmsleep on_ac_power $RPM_BUILD_ROOT%{_bindir}
 install apmd apmd_proxy $RPM_BUILD_ROOT%{_sbindir}
 
 install xapm $RPM_BUILD_ROOT%{_prefix}/X11R6/bin
 
-install apm.1 apmsleep.1 tailf.1 $RPM_BUILD_ROOT%{_mandir}/man1/
+install apm.1 apmsleep.1 $RPM_BUILD_ROOT%{_mandir}/man1/
 install apmd.8 $RPM_BUILD_ROOT%{_mandir}/man8/
 install xapm.1 $RPM_BUILD_ROOT%{_prefix}/X11R6/man/man1/xapm.1x
 install xbattery/xbattery.man $RPM_BUILD_ROOT%{_prefix}/X11R6/man/man1/xbattery.1x
@@ -115,7 +139,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc ANNOUNCE.gz ChangeLog.gz README.gz README.transfer.gz
+%doc *.gz
 %{_mandir}/man*/*
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_sbindir}/*
