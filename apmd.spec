@@ -20,7 +20,8 @@ Summary(uk):	ı‘…Ã¶‘… ƒÃ— Advanced Power Management (APM) BIOS ◊ Ã¡–‘œ–¡»
 Summary(zh_CN):	”√”⁄œ•…œ–Õº∆À„ª˙µƒ∏ﬂº∂µÁ‘¥π‹¿Ì (APM) BIOS  µ”√≥Ã–Ú°£
 Name:		apmd
 Version:	3.0.2
-Release:	3
+Release:	12
+Epoch:		1
 License:	GPL
 Group:		Applications/System
 Source0:	http://www.worldvisions.ca/~apenwarr/apmd/%{name}-%{version}.tar.gz
@@ -237,8 +238,6 @@ cat << EOF > $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/apmd
 APMD_OPTIONS="-p 10 -w 5 -W -P %{_sbindir}/apmd_proxy"
 EOF
 
-gzip -9nf README README.transfer ChangeLog ANNOUNCE
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -260,7 +259,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc README README.transfer ChangeLog ANNOUNCE
 %{_mandir}/man*/*
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_sbindir}/*
