@@ -27,7 +27,6 @@ case "$1" in
 		touch /var/lock/subsys/apmd
 	else
 		msg_already_running APM
-		exit 1
 	fi
 	;;
   stop)
@@ -37,17 +36,18 @@ case "$1" in
 		rm -f /var/lock/subsys/apmd
 	else
 		msg_not_running APM
-		exit 1
 	fi
 	;;
   status)
 	status apmd
+	exit $?
 	;;
-  restart|reload)
+  restart|force-reload)
 	$0 stop
 	$0 start
+	exit $?
 	;;
   *)
-	msg_usage "$0 {start|stop|restart|reload|status}"
-	exit 1
+	msg_usage "$0 {start|stop|restart|force-reload|status}"
+	exit 3
 esac
