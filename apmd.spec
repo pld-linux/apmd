@@ -206,8 +206,8 @@ XFree86.
 %patch0 -p1
 
 %ifarch ppc
-%patch1 -p1 
-%endif 
+%patch1 -p1
+%endif
 
 %build
 %{__make} \
