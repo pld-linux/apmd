@@ -8,7 +8,7 @@ Summary(id):	Advanced Power Management (APM) BIOS utilities untuk laptop
 Summary(is):	Tól sem stjórnar orkunotkun fartölvu (Advanced Power Management)
 Summary(it):	Utility APM (Advanced Power Management) BIOS per laptop
 Summary(ja):	¥é¥Ã¥×¥È¥Ã¥×ÍÑ¤Î APM (Advanced Power Management) ¥æ¡¼¥Æ¥£¥ê¥Æ¥£
-Summary(no):	Advanced Power Management (APM) BIOS verktøy for bærbare
+Summary(nb):	Advanced Power Management (APM) BIOS verktøy for bærbare
 Summary(pl):	Obs³uga zarz±dzania enerig± (APM) dla notebooków
 Summary(pt):	Utilitários Advanced Power Management (APM) para portáteis
 Summary(pt_BR):	Utilitários para APM (Gerenciamento Avancado de Energia)
@@ -30,6 +30,7 @@ Source1:	%{name}.init
 URL:		http://www.worldvisions.ca/~apenwarr/apmd/
 BuildRequires:	XFree86-devel
 BuildRequires:	libtool
+BuildRequires:	sed >= 4.0
 PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
@@ -108,7 +109,7 @@ Management (APM) ¥Ç¡¼¥â¥ó¤È¥æ¡¼¥Æ¥£¥ê¥Æ¥£¤òÀ©¸æ¤¹¤ë¤¿¤á¤Î¥×¥í¥°¥é¥à
 ¤Ê¤ë¤È·Ù¹ð¤·¤¿¤ê¡¢¥µ¥¹¥Ú¥ó¥É¥â¡¼¥É¤ËÀÚ¤êÂØ¤ï¤ëÁ°¤Ë PCMCIA ¤ò
 ¥·¥ã¥Ã¥È¥À¥¦¥ó¤·¤¿¤ê¤·¤Þ¤¹¡£
 
-%description -l no
+%description -l nb
 APMD er et sett programmer for kontroll av Advanced Power Management
 (APM) daemonen og verktøy som finnes i de fleste moderne bærbare
 datamaskiner. APMD kan overvåke batteriet på din bærbare og advare deg
@@ -215,6 +216,7 @@ Statyczna biblioteka libapm.
 Summary:	XFree86 APM monitoring and management tool
 Summary(pl):	Narzêdzie do monitorowania i zarz±dzania APMem pod XFree86
 Group:		X11/Applications
+Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	XFree86
 
 %description -n xapm
@@ -227,12 +229,12 @@ XFree86.
 %prep
 %setup -q -n %{name}-%{version}.orig
 
-%build
 sed -i -e 's#-I/usr/src/linux.*/include##g' Makefile
-ln -s .libs/libapm.a libapm.a
+sed -i -e 's#\.\./libapm\.a#-L../.libs -lapm#' xbattery/Makefile
 
+%build
 %{__make} \
-	LIBTOOL="libtool --quiet --tag=CXX" \
+	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags}" \
 	LDFLAGS="%{rpmldflags}" \
 	APMD_PROXY_DIR=%{_sbindir}
@@ -240,22 +242,24 @@ ln -s .libs/libapm.a libapm.a
 %{__make} -C xbattery clean
 
 %{__make} -C xbattery \
+	CC="%{__cc}" \
 	CCOPTIONS="%{rpmcflags}" \
 	LOCAL_LDFLAGS="%{rpmldflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_includedir},%{_libdir},%{_sbindir}} \
-	$RPM_BUILD_ROOT{%{_mandir}/man{1,8},/etc/{rc.d/init.d,sysconfig}}
+	$RPM_BUILD_ROOT{%{_mandir}/{man{1,8},fr/man1},/etc/{rc.d/init.d,sysconfig}}
 
 install apm xapm apmsleep on_ac_power xbattery/xbattery $RPM_BUILD_ROOT%{_bindir}
 install apmd apmd_proxy $RPM_BUILD_ROOT%{_sbindir}
 
-install *.1 $RPM_BUILD_ROOT%{_mandir}/man1
+install apm.1 apmsleep.1 on_ac_power.1 xapm.1 $RPM_BUILD_ROOT%{_mandir}/man1
+install apmsleep.fr.1 $RPM_BUILD_ROOT%{_mandir}/fr/man1/apmsleep.1
 install *.8 $RPM_BUILD_ROOT%{_mandir}/man8
 install xbattery/xbattery.man $RPM_BUILD_ROOT%{_mandir}/man1/xbattery.1
 
-libtool --mode=install /usr/bin/install -c libapm.la $RPM_BUILD_ROOT%{_libdir}/libapm.la
+libtool --mode=install install libapm.la $RPM_BUILD_ROOT%{_libdir}/libapm.la
 
 install apm.h $RPM_BUILD_ROOT%{_includedir}
 
@@ -290,13 +294,17 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog LSM README
-%{_mandir}/man*/*
-%exclude %{_mandir}/man1/x*
-%attr(755,root,root) %{_bindir}/*
-%exclude %{_bindir}/x*
+%attr(755,root,root) %{_bindir}/apm
+%attr(755,root,root) %{_bindir}/apmsleep
+%attr(755,root,root) %{_bindir}/on_ac_power
 %attr(755,root,root) %{_sbindir}/*
 %attr(754,root,root) /etc/rc.d/init.d/apmd
-%config(noreplace) /etc/sysconfig/apmd
+%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/apmd
+%{_mandir}/man1/apm.1*
+%{_mandir}/man1/apmsleep.1*
+%{_mandir}/man1/on_ac_power.1*
+%{_mandir}/man8/apmd.8*
+%lang(fr) %{_mandir}/fr/man1/apmsleep.1*
 
 %files libs
 %defattr(644,root,root,755)
