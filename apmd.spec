@@ -87,5 +87,5 @@ fi
 %attr(755,root,root) /usr/sbin/*
 /usr/include/*
 /usr/lib/*
-%attr(755,root,root) %config /etc/rc.d/init.d/apmd
+%attr(754,root,root) /etc/rc.d/init.d/apmd
 %config /etc/sysconfig/apmd
