@@ -13,9 +13,10 @@ Source0:	http://www.worldvisions.ca/~apenwarr/apmd/%{name}-%{version}.tar.gz
 Source1:	%{name}.init
 Patch0:		%{name}-security.patch
 URL:		http://www.worldvisions.ca/~apenwarr/apmd/
-Requires:	procps
-Prereq:		/sbin/chkconfig
 BuildRequires:	XFree86-devel
+Prereq:		/sbin/chkconfig
+Obsoletes:	acpid
+Requires:	procps
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ExclusiveArch:	%{ix86}
 
