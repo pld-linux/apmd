@@ -2,7 +2,7 @@ Summary:	Advanced Power Management (APM) utilities for notebooks.
 Summary(pl):	Obs³uga zarz±dzania enerig± (APM) dla notebooków.
 Name:		apmd
 Version:	3.0
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Utilities/System
