@@ -2,7 +2,7 @@ Summary:	Advanced Power Management (APM) utilities for notebooks
 Summary(pl):	Obs³uga zarz±dzania enerig± (APM) dla notebooków
 Name:		apmd
 Version:	3.0
-Release:	4
+Release:	5
 License:	GPL
 Group:		Utilities/System
 Group(pl):	Narzêdzia/System
@@ -96,7 +96,7 @@ gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man*/* \
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/chkconfig --add apmd
+/sbin/chkconfig apmd reset
 if [ -f /var/lock/subsys/apmd ]; then
 	/etc/rc.d/init.d/apmd restart 1>&2
 else
