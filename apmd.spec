@@ -25,6 +25,7 @@ Epoch:		1
 License:	GPL
 Group:		Applications/System
 Source0:	http://www.worldvisions.ca/~apenwarr/apmd/%{name}-%{version}.tar.gz
+# Source0-md5:	23ce275766441c59b6b47c002f9098eb
 Source1:	%{name}.init
 Patch0:		%{name}-security.patch
 Patch1:		%{name}-spinlock.patch
