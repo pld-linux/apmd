@@ -12,7 +12,7 @@ Source1: 	apmd.init
 Requires:	procps
 Prereq:		chkconfig
 BuildRoot: 	/tmp/%{name}-%{version}
-ExclusiveArch:  i386 i486 i586 i686
+ExclusiveArch:  %{ix86}
 
 %description
 Advanced Power Management daemon and utilities allows you to watch your 
