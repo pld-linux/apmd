@@ -23,22 +23,6 @@ Version:	3.0.2
 Release:	3
 License:	GPL
 Group:		Applications/System
-Group(cs):	Aplikace/Systém
-Group(da):	Programmer/System
-Group(de):	Applikationen/System
-Group(es):	Aplicaciones/Sistema
-Group(fr):	Applications/Système
-Group(is):	Forrit/Kerfisforrit
-Group(it):	Applicazioni/Sistema
-Group(ja):	¥¢¥×¥ê¥±¡¼¥·¥ç¥ó/¥·¥¹¥Æ¥à
-Group(no):	Applikasjoner/System
-Group(pl):	Aplikacje/System
-Group(pt):	Aplicações/Sistema
-Group(pt_BR):	Aplicações/Sistema
-Group(ru):	ğÒÉÌÏÖÅÎÉÑ/óÉÓÔÅÍÁ
-Group(sl):	Programi/Sistem
-Group(sv):	Tillämpningar/System
-Group(uk):	ğÒÉËÌÁÄÎ¦ ğÒÏÇÒÁÍÉ/óÉÓÔÅÍÁ
 Source0:	http://www.worldvisions.ca/~apenwarr/apmd/%{name}-%{version}.tar.gz
 Source1:	%{name}.init
 Patch0:		%{name}-security.patch
@@ -185,22 +169,6 @@ Summary(es):	Archivos de inclusión y bibliotecas para apmd en versión estática
 Summary(pl):	Pliki nag³ówkowe i biblioteka statyczna do tworzenia aplikacji korzystaj±cych z APM
 Summary(pt_BR):	Arquivos de inclusão e bibliotecas para o apmd em versão estática
 Group:		Development/Libraries
-Group(cs):	Vıvojové prostøedky/Knihovny
-Group(da):	Udvikling/Biblioteker
-Group(de):	Entwicklung/Bibliotheken
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(is):	Şróunartól/Ağgerğasöfn
-Group(it):	Sviluppo/Librerie
-Group(ja):	³«È¯/¥é¥¤¥Ö¥é¥ê
-Group(no):	Utvikling/Bibliotek
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(pt):	Desenvolvimento/Bibliotecas
-Group(ru):	òÁÚÒÁÂÏÔËÁ/âÉÂÌÉÏÔÅËÉ
-Group(sl):	Razvoj/Knji¾nice
-Group(sv):	Utveckling/Bibliotek
-Group(uk):	òÏÚÒÏÂËÁ/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	%{name} = %{version}
 
 %description devel
@@ -220,23 +188,6 @@ Arquivos de inclusão e bibliotecas para o apmd em versão estática
 Summary:	XFree86 APM monitoring and management tool
 Summary(pl):	Narzêdzie do monitorowania i zarz±dzania APMem pod XFree86
 Group:		X11/Applications
-Group(cs):	X11/Aplikace
-Group(da):	X11/Programmer
-Group(de):	X11/Applikationen
-Group(es):	X11/Aplicaciones
-Group(fr):	X11/Applications
-Group(id):	X11/Aplikasi
-Group(is):	X11/Forrit
-Group(it):	X11/Applicazioni
-Group(ja):	X11/¥¢¥×¥ê¥±¡¼¥·¥ç¥ó
-Group(no):	X11/Applikasjoner
-Group(pl):	X11/Aplikacje
-Group(pt_BR):	X11/Aplicações
-Group(pt):	X11/Aplicações
-Group(ru):	X11/ğÒÉÌÏÖÅÎÉÑ
-Group(sl):	X11/Programi
-Group(sv):	X11/Tillämpningar
-Group(uk):	X11/ğÒÉËÌÁÄÎ¦ ğÒÏÇÒÁÍÉ
 Requires:	XFree86
 
 %description -n xapm
