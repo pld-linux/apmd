@@ -10,12 +10,18 @@
 # Source function library.
 . /etc/rc.d/init.d/functions
 
-if [ ! -f /proc/apm ]; then  
-	modprobe apm && echo $(nls "No kernel APM support")'!'; exit 1
+no_kernel_supp() {
+	echo $(nls "No kernel APM support")'!'
+	exit 1
+}
+
+if [ ! -f /proc/apm ]; then
+	modprobe apm || no_kernel_supp
 fi
 
 CONFIG=/etc/sysconfig/apmd
 
+RETVAL=0
 # See how we were called.
 case "$1" in
   start)
@@ -24,7 +30,8 @@ case "$1" in
 		msg_starting APM
 		[ -r "$CONFIG" ] && . "$CONFIG"
 		daemon apmd "$APMD_OPTIONS"
-		touch /var/lock/subsys/apmd
+		RETVAL=$?
+		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/apmd
 	else
 		msg_already_running APM
 	fi
@@ -51,3 +58,5 @@ case "$1" in
 	msg_usage "$0 {start|stop|restart|force-reload|status}"
 	exit 3
 esac
+
+exit $RETVAL
