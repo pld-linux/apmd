@@ -1,19 +1,11 @@
-diff -Naur apmd.orig/apmsleep.c apmd/apmsleep.c
---- apmd.orig/apmsleep.c	Fri May 11 22:30:08 2001
-+++ apmd/apmsleep.c	Sat Jun 15 18:39:08 2002
-@@ -45,9 +45,12 @@
- #include <stdio.h>
+--- apmd/apmsleep.c.orig	Fri May 11 22:30:08 2001
++++ apmd/apmsleep.c	Mon Oct  6 16:38:09 2003
+@@ -46,7 +46,7 @@
  #include <linux/version.h>
  
--#if LINUX_VERSION_CODE > KERNEL_VERSION(2,2,0)
+ #if LINUX_VERSION_CODE > KERNEL_VERSION(2,2,0)
 -#include <asm/spinlock.h>
--#endif
-+/* 
-+ // fixme baby 
-+ #if LINUX_VERSION_CODE > KERNEL_VERSION(2,2,0)
-+ #include <asm/spinlock.h>
-+ #endif
-+*/
++#include <linux/spinlock.h>
+ #endif
  
  #include <linux/mc146818rtc.h>
- #include <sys/ioctl.h>
