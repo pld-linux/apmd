@@ -7,21 +7,27 @@
 # processname: apmd
 # config: /etc/sysconfig/apmd
 
-CONFIG=/etc/sysconfig/apmd
 # Source function library.
 . /etc/rc.d/init.d/functions
+
+if [ ! -f /proc/apm ]; then  
+  echo "No kernel APM support!"
+  exit 1
+fi
+
+CONFIG=/etc/sysconfig/apmd
 
 # See how we were called.
 case "$1" in
   start)
-	echo -n "Starting up APM daemon: "
-	test -r "$CONFIG" && . "$CONFIG"
+	show "Starting up APM daemon: "
+	[ -r "$CONFIG" ] && . "$CONFIG"
 	daemon /usr/sbin/apmd "$APMD_OPTIONS"
 	touch /var/lock/subsys/apmd
 	echo
 	;;
   stop)
-	echo -n "Shutting down APM daemon: "
+	show "Shutting down APM daemon: "
 	killproc apmd
 	rm -f /var/lock/subsys/apmd
 	echo
@@ -35,6 +41,6 @@ case "$1" in
 	;;
 	
   *)
-	echo "Usage: apmd.init {start|stop|status|restart|reload}"
+	echo "Usage: apmd {start|stop|status|restart|reload}"
 	exit 1
 esac
