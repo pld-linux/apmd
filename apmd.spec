@@ -11,6 +11,7 @@ Source:		http://worldvisions.ca/~apenwarr/apmd/%{name}-%{version}.tar.gz
 Source1: 	apmd.init
 Requires:	procps
 Prereq:		chkconfig
+BuildRequires:	XFree86-devel
 BuildRoot: 	/tmp/%{name}-%{version}
 ExclusiveArch:  %{ix86}
 
