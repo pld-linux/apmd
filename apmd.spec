@@ -32,6 +32,7 @@ BuildRequires:	XFree86-devel
 BuildRequires:	libtool
 PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
+Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	procps
 Obsoletes:	acpid
 ExclusiveArch:	%{ix86} ppc
@@ -168,10 +169,14 @@ APMD 还可以在暂挂前关闭 PCMCIA 插槽。
 
 %package libs
 Summary:        libapm library
-Group:          Development/Libraries
+Summary(pl):	Biblioteka libapm
+Group:          Libraries
 
 %description libs
 libapm library.
+
+%description libs -l pl
+Biblioteka libapm.
 
 %package devel
 Summary:	Header files and static library for developing APM applications
@@ -179,7 +184,7 @@ Summary(es):	Archivos de inclusi髇 y bibliotecas para apmd en versi髇 est醫ica
 Summary(pl):	Pliki nag丑wkowe i biblioteka statyczna do tworzenia aplikacji korzystaj眂ych z APM
 Summary(pt_BR):	Arquivos de inclus鉶 e bibliotecas para o apmd em vers鉶 est醫ica
 Group:		Development/Libraries
-Requires:	%{name}-libs = %{version}
+Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 
 %description devel
 Header files necessary for developing APM applications.
@@ -196,11 +201,15 @@ Arquivos de inclus鉶 e bibliotecas para o apmd em vers鉶 est醫ica
 
 %package static
 Summary:	Static libapm library
+Summary(pl):	Statyczna biblioteka libapm
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 Static libapm library.
+
+%description static -l pl
+Statyczna biblioteka libapm.
 
 %package -n xapm
 Summary:	XFree86 APM monitoring and management tool
@@ -237,8 +246,7 @@ ln -s .libs/libapm.a libapm.a
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_includedir},%{_libdir},%{_sbindir}} \
-	$RPM_BUILD_ROOT%{_prefix}/X11R6/{bin,man/man1} \
-	$RPM_BUILD_ROOT{%{_mandir}/man{1,8},%{_sysconfdir}/{rc.d/init.d,sysconfig}}
+	$RPM_BUILD_ROOT{%{_mandir}/man{1,8},/etc/{rc.d/init.d,sysconfig}}
 
 install apm xapm apmsleep on_ac_power xbattery/xbattery $RPM_BUILD_ROOT%{_bindir}
 install apmd apmd_proxy $RPM_BUILD_ROOT%{_sbindir}
@@ -252,7 +260,6 @@ libtool --mode=install /usr/bin/install -c libapm.la $RPM_BUILD_ROOT%{_libdir}/l
 install apm.h $RPM_BUILD_ROOT%{_includedir}
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/apmd
-install xbattery/xbattery $RPM_BUILD_ROOT%{_prefix}/X11R6/bin
 
 cat << EOF > $RPM_BUILD_ROOT/etc/sysconfig/apmd
 APMD_OPTIONS="-p 10 -w 5 -W -P %{_sbindir}/apmd_proxy"
@@ -277,8 +284,8 @@ if [ "$1" = "0" ]; then
 	/sbin/chkconfig --del apmd
 fi
 
-%post libs -p /sbin/ldconfig
-%postun libs -p /sbin/ldconfig
+%post	libs -p /sbin/ldconfig
+%postun	libs -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
@@ -293,13 +300,13 @@ fi
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/*.so.*
+%attr(755,root,root) %{_libdir}/*.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/*
 %attr(755,root,root) %{_libdir}/*.so
 %{_libdir}/*.la
+%{_includedir}/*
 
 %files static
 %defattr(644,root,root,755)
