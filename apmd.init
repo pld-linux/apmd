@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# chkconfig:	2345 05 92
+# chkconfig:	2345 35 65
 # description:	apmd is used for monitoring batery status and logging it via \
 #		syslog(8). It can also be used for shutting down the machine when \
 #		the battery is low.
