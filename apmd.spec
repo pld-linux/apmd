@@ -58,9 +58,9 @@ XFree86
 %setup -q -n apmd
 
 %build
-make CFLAGS="$RPM_OPT_FLAGS" LDFLAGS=-s APMD_PROXY_DIR=%{_sbindir}
-make -C xbattery clean
-make CCOPTIONS="$RPM_OPT_FLAGS" LOCAL_LDFLAGS="-s" -C xbattery
+%{__make} CFLAGS="$RPM_OPT_FLAGS" LDFLAGS=-s APMD_PROXY_DIR=%{_sbindir}
+%{__make} -C xbattery clean
+%{__make} CCOPTIONS="$RPM_OPT_FLAGS" LOCAL_LDFLAGS="-s" -C xbattery
 
 %install
 rm -rf $RPM_BUILD_ROOT
