@@ -114,7 +114,7 @@ brukere når batterinivået er lavt og/eller stenge ned PCMCIA
 kontaktene før maskinen går i dvale.
 
 %description -l pl
-Demon zadz±dzania energi± APM (Advanced Power Management) wraz z
+Demon zarz±dzania energi± APM (Advanced Power Management) wraz z
 programami pomocniczymi. Dziêki nim mo¿liwe jest monitorowanie stanu
 zasilania Twojego notebooka i ostrzeganie wszystkich u¿ytkowników o
 koñcz±cej siê baterii, jak równie¿ automatyczne reagowanie na zmiany.
