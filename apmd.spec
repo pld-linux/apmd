@@ -231,10 +231,10 @@ install xbattery/xbattery.man $RPM_BUILD_ROOT%{_prefix}/X11R6/man/man1/xbattery.
 install libapm.a $RPM_BUILD_ROOT%{_libdir}
 install apm.h $RPM_BUILD_ROOT%{_includedir}
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d/apmd
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/apmd
 install xbattery/xbattery $RPM_BUILD_ROOT%{_prefix}/X11R6/bin
 
-cat << EOF > $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/apmd
+cat << EOF > $RPM_BUILD_ROOT/etc/sysconfig/apmd
 APMD_OPTIONS="-p 10 -w 5 -W -P %{_sbindir}/apmd_proxy"
 EOF
 
