@@ -29,7 +29,7 @@ równie¿ automatyczne reagowanie na zmiany.
 %setup -q -n apmd
 
 %build
-make CFLAGS="$RPM_OPT_FLAGS" LDFLAGS=-s
+make CFLAGS="$RPM_OPT_FLAGS" LDFLAGS=-s APMD_PROXY_DIR=/usr/sbin
 make -C xbattery clean
 make CCOPTIONS="$RPM_OPT_FLAGS" -C xbattery
 
@@ -59,7 +59,7 @@ install -s xbattery/xbattery $RPM_BUILD_ROOT/usr/X11R6/bin
 install xbattery/xbattery.man $RPM_BUILD_ROOT/usr/X11R6/man/man1/xbattery.1x
 
 cat <<'EOF' >$RPM_BUILD_ROOT/etc/sysconfig/apmd
-APMD_OPTIONS="-p 10 -w 5 -W"
+APMD_OPTIONS="-p 10 -w 5 -W -P /usr/sbin/apmd_proxy"
 EOF
 
 gzip -9nf $RPM_BUILD_ROOT/usr/share/man/man*/* \
