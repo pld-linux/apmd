@@ -20,7 +20,7 @@ Summary(uk):	ı‘…Ã¶‘… ƒÃ— Advanced Power Management (APM) BIOS ◊ Ã¡–‘œ–¡»
 Summary(zh_CN):	”√”⁄œ•…œ–Õº∆À„ª˙µƒ∏ﬂº∂µÁ‘¥π‹¿Ì (APM) BIOS  µ”√≥Ã–Ú°£
 Name:		apmd
 Version:	3.2.1
-Release:	0.1
+Release:	1
 Epoch:		1
 License:	GPL
 Group:		Applications/System
@@ -29,6 +29,7 @@ Source0:	ftp://ftp.debian.org/debian/pool/main/a/apmd/%{name}_%{version}.orig.ta
 Source1:	%{name}.init
 URL:		http://www.worldvisions.ca/~apenwarr/apmd/
 BuildRequires:	XFree86-devel
+BuildRequires:	libtool
 PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
 Requires:	procps
@@ -165,13 +166,20 @@ APMD
 ø…“‘º‡øÿ± º«±æº∆À„ª˙µƒµÁ≥ÿ◊¥Ã¨£¨≤¢«“‘⁄µÁ≥ÿµÁ¡ø≤ª◊„ ±œÚ”√ªß∑¢≥ˆæØ∏Ê°£
 APMD ªπø…“‘‘⁄‘›π“«∞πÿ±’ PCMCIA ≤Â≤€°£
 
+%package libs
+Summary:        libapm library
+Group:          Development/Libraries
+
+%description libs
+libapm library.
+
 %package devel
 Summary:	Header files and static library for developing APM applications
 Summary(es):	Archivos de inclusiÛn y bibliotecas para apmd en versiÛn est·tica
 Summary(pl):	Pliki nag≥Ûwkowe i biblioteka statyczna do tworzenia aplikacji korzystaj±cych z APM
 Summary(pt_BR):	Arquivos de inclus„o e bibliotecas para o apmd em vers„o est·tica
 Group:		Development/Libraries
-#Requires:	%{name} = %{version}
+Requires:	%{name}-libs = %{version}
 
 %description devel
 Header files necessary for developing APM applications.
@@ -185,6 +193,14 @@ APM.
 
 %description devel -l pt_BR
 Arquivos de inclus„o e bibliotecas para o apmd em vers„o est·tica
+
+%package static
+Summary:	Static libapm library
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}
+
+%description static
+Static libapm library.
 
 %package -n xapm
 Summary:	XFree86 APM monitoring and management tool
@@ -203,6 +219,9 @@ XFree86.
 %setup -q -n %{name}-%{version}.orig
 
 %build
+sed -i -e 's#-I/usr/src/linux.*/include##g' Makefile
+ln -s .libs/libapm.a libapm.a
+
 %{__make} \
 	LIBTOOL="libtool --quiet --tag=CXX" \
 	CFLAGS="%{rpmcflags}" \
@@ -221,17 +240,15 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_includedir},%{_libdir},%{_sbindir}} \
 	$RPM_BUILD_ROOT%{_prefix}/X11R6/{bin,man/man1} \
 	$RPM_BUILD_ROOT{%{_mandir}/man{1,8},%{_sysconfdir}/{rc.d/init.d,sysconfig}}
 
-install apm apmsleep on_ac_power $RPM_BUILD_ROOT%{_bindir}
+install apm xapm apmsleep on_ac_power xbattery/xbattery $RPM_BUILD_ROOT%{_bindir}
 install apmd apmd_proxy $RPM_BUILD_ROOT%{_sbindir}
 
-install xapm $RPM_BUILD_ROOT%{_prefix}/X11R6/bin
+install *.1 $RPM_BUILD_ROOT%{_mandir}/man1
+install *.8 $RPM_BUILD_ROOT%{_mandir}/man8
+install xbattery/xbattery.man $RPM_BUILD_ROOT%{_mandir}/man1/xbattery.1
 
-install apm.1 apmsleep.1 $RPM_BUILD_ROOT%{_mandir}/man1
-install apmd.8 $RPM_BUILD_ROOT%{_mandir}/man8
-install xapm.1 $RPM_BUILD_ROOT%{_prefix}/X11R6/man/man1/xapm.1x
-install xbattery/xbattery.man $RPM_BUILD_ROOT%{_prefix}/X11R6/man/man1/xbattery.1x
+libtool --mode=install /usr/bin/install -c libapm.la $RPM_BUILD_ROOT%{_libdir}/libapm.la
 
-install libapm.a $RPM_BUILD_ROOT%{_libdir}
 install apm.h $RPM_BUILD_ROOT%{_includedir}
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/apmd
@@ -260,21 +277,35 @@ if [ "$1" = "0" ]; then
 	/sbin/chkconfig --del apmd
 fi
 
+%post libs -p /sbin/ldconfig
+%postun libs -p /sbin/ldconfig
+
 %files
 %defattr(644,root,root,755)
-%doc README README.transfer ChangeLog ANNOUNCE
+%doc AUTHORS ChangeLog LSM README
 %{_mandir}/man*/*
+%exclude %{_mandir}/man1/x*
 %attr(755,root,root) %{_bindir}/*
+%exclude %{_bindir}/x*
 %attr(755,root,root) %{_sbindir}/*
 %attr(754,root,root) /etc/rc.d/init.d/apmd
 %config(noreplace) /etc/sysconfig/apmd
 
+%files libs
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/*.so.*
+
 %files devel
 %defattr(644,root,root,755)
 %{_includedir}/*
+%attr(755,root,root) %{_libdir}/*.so
+%{_libdir}/*.la
+
+%files static
+%defattr(644,root,root,755)
 %{_libdir}/*.a
 
 %files -n xapm
 %defattr(644,root,root,755)
-%{_prefix}/X11R6/man/man*/*
-%attr(755,root,root) %{_prefix}/X11R6/bin/*
+%attr(755,root,root) %{_bindir}/x*
+%{_mandir}/man1/x*
