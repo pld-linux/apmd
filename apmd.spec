@@ -171,7 +171,7 @@ Summary(es):	Archivos de inclusión y bibliotecas para apmd en versión estática
 Summary(pl):	Pliki nag³ówkowe i biblioteka statyczna do tworzenia aplikacji korzystaj±cych z APM
 Summary(pt_BR):	Arquivos de inclusão e bibliotecas para o apmd em versão estática
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+#Requires:	%{name} = %{version}
 
 %description devel
 Header files necessary for developing APM applications.
