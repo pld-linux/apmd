@@ -4,16 +4,17 @@ Summary(pt_BR):	Utilitários para APM (Gerenciamento Avancado de Energia)
 Summary(es):	Utilitarios para APM (Gestión Avanzado de Energía)
 Name:		apmd
 Version:	3.0.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/System
 Group(de):	Applikationen/System
 Group(pl):	Aplikacje/System
 Source0:	http://www.worldvisions.ca/~apenwarr/apmd/%{name}-%{version}.tar.gz
 Source1:	%{name}.init
+Patch0:		%{name}-security.patch
 URL:		http://www.worldvisions.ca/~apenwarr/apmd/
 Requires:	procps
-Prereq:		chkconfig
+Prereq:		/sbin/chkconfig
 BuildRequires:	XFree86-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ExclusiveArch:	%{ix86}
@@ -84,6 +85,7 @@ XFree86.
 
 %prep
 %setup -q -n apmd
+%patch0 -p1
 
 %build
 %{__make} CFLAGS="%{rpmcflags}" LDFLAGS="%{rpmldflags}" APMD_PROXY_DIR=%{_sbindir}
