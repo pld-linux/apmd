@@ -26,13 +26,14 @@ Group:		Applications/System
 Source0:	http://www.worldvisions.ca/~apenwarr/apmd/%{name}-%{version}.tar.gz
 Source1:	%{name}.init
 Patch0:		%{name}-security.patch
+Patch1:		%{name}-spinlock.patch
 URL:		http://www.worldvisions.ca/~apenwarr/apmd/
 BuildRequires:	XFree86-devel
 Prereq:		/sbin/chkconfig
 Obsoletes:	acpid
 Requires:	procps
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-ExclusiveArch:	%{ix86}
+ExclusiveArch:	%{ix86} ppc
 
 %description
 Advanced Power Management daemon and utilities allows you to watch
@@ -200,6 +201,10 @@ XFree86.
 %prep
 %setup -q -n apmd
 %patch0 -p1
+
+%ifarch ppc
+%patch1 -p1 
+%endif 
 
 %build
 %{__make} CFLAGS="%{rpmcflags}" LDFLAGS="%{rpmldflags}" APMD_PROXY_DIR=%{_sbindir}
