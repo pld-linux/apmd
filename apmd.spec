@@ -20,7 +20,7 @@ Summary(uk):	Утил╕ти для Advanced Power Management (APM) BIOS в лаптопах
 Summary(zh_CN):	сцсзо╔иопм╪фкЦ╩З╣д╦ъ╪╤╣Гт╢╧эюМ (APM) BIOS й╣сцЁлпР║ё
 Name:		apmd
 Version:	3.0.2
-Release:	12
+Release:	13
 Epoch:		1
 License:	GPL
 Group:		Applications/System
