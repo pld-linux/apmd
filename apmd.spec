@@ -78,7 +78,10 @@ Summary:	XFree86 APM monitoring and management tool
 Summary(pl):	Narzêdzie do monitorowania i zarz±dzania APMem pod XFree86
 Group:		X11/Applications
 Group(de):	X11/Applikationen
+Group(es):	X11/Aplicaciones
 Group(pl):	X11/Aplikacje
+Group(pt_BR):	X11/Aplicações
+Group(pt):	X11/Aplicações
 Requires:	XFree86
 
 %description -n xapm
