@@ -24,13 +24,11 @@ case "$1" in
 	[ -r "$CONFIG" ] && . "$CONFIG"
 	daemon /usr/sbin/apmd "$APMD_OPTIONS"
 	touch /var/lock/subsys/apmd
-	echo
 	;;
   stop)
 	show "Shutting down APM daemon: "
 	killproc apmd
 	rm -f /var/lock/subsys/apmd
-	echo
 	;;
   status)
 	status apmd
