@@ -7,7 +7,7 @@ Epoch:		1
 License:	GPL
 Group:		Utilities/System
 Group(pl):	Narzêdzia/System
-Source:		http://www.worldvisions.ca/~apenwarr/apmd/%{name}-%{version}.tar.gz
+Source0:	http://www.worldvisions.ca/~apenwarr/apmd/%{name}-%{version}.tar.gz
 Source1:	apmd.init
 URL:		http://www.worldvisions.ca/~apenwarr/apmd/
 Requires:	procps
@@ -17,15 +17,15 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ExclusiveArch:	%{ix86}
 
 %description
-Advanced Power Management daemon and utilities allows you to watch your
-notebook's power state and warn all users when the battery is low. It can
-also handle some power state events automatically.
+Advanced Power Management daemon and utilities allows you to watch
+your notebook's power state and warn all users when the battery is
+low. It can also handle some power state events automatically.
 
 %description -l pl
-Demon zadz±dzania energi± APM (Advanced Power Management) wraz z programami
-pomocniczymi. Dziêki nim mo¿liwe jest monitorowanie stanu zasilania Twojego
-notebooka i ostrzeganie wszystkich u¿ytkowników o koñcz±cej siê baterii,
-jak równie¿ automatyczne reagowanie na zmiany.
+Demon zadz±dzania energi± APM (Advanced Power Management) wraz z
+programami pomocniczymi. Dziêki nim mo¿liwe jest monitorowanie stanu
+zasilania Twojego notebooka i ostrzeganie wszystkich u¿ytkowników o
+koñcz±cej siê baterii, jak równie¿ automatyczne reagowanie na zmiany.
 
 %prep
 %setup -q -n apmd
@@ -39,7 +39,7 @@ make CCOPTIONS="$RPM_OPT_FLAGS" -C xbattery
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_prefix}/{bin,include,lib,sbin}
 install -d $RPM_BUILD_ROOT%{_prefix}/X11R6/{bin,man/man1}
-install -d $RPM_BUILD_ROOT%{_datadir}/man/{man1,man8}
+install -d $RPM_BUILD_ROOT%{_mandir}/{man1,man8}
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig
 install apm 	$RPM_BUILD_ROOT%{_bindir}
@@ -49,11 +49,11 @@ install tailf 	$RPM_BUILD_ROOT%{_bindir}
 install on_ac_power $RPM_BUILD_ROOT%{_bindir}
 install xapm 	$RPM_BUILD_ROOT%{_prefix}/X11R6/bin
 install apmd_proxy $RPM_BUILD_ROOT%{_sbindir}
-install apm.1 	$RPM_BUILD_ROOT%{_datadir}/man/man1/
-install apmd.8 	$RPM_BUILD_ROOT%{_datadir}/man/man8/
+install apm.1 	$RPM_BUILD_ROOT%{_mandir}/man1/
+install apmd.8 	$RPM_BUILD_ROOT%{_mandir}/man8/
 install xapm.1 	$RPM_BUILD_ROOT%{_prefix}/X11R6/man/man1/xapm.1x
-install tailf.1  $RPM_BUILD_ROOT%{_datadir}/man/man1/
-install apmsleep.1 $RPM_BUILD_ROOT%{_datadir}/man/man1
+install tailf.1  $RPM_BUILD_ROOT%{_mandir}/man1/
+install apmsleep.1 $RPM_BUILD_ROOT%{_mandir}/man1
 install libapm.a $RPM_BUILD_ROOT%{_libdir}
 install apm.h $RPM_BUILD_ROOT%{_includedir}
 install $RPM_SOURCE_DIR/apmd.init $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d/apmd
@@ -64,7 +64,7 @@ cat <<'EOF' >$RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/apmd
 APMD_OPTIONS="-p 10 -w 5 -W -P %{_sbindir}/apmd_proxy"
 EOF
 
-gzip -9nf $RPM_BUILD_ROOT%{_datadir}/man/man*/* \
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man*/* \
 	$RPM_BUILD_ROOT%{_prefix}/X11R6/man/man*/* \
 	README README.transfer ChangeLog ANNOUNCE
  
@@ -90,7 +90,7 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc ANNOUNCE.gz ChangeLog.gz README.gz README.transfer.gz
-%{_datadir}/man/man*/*
+%{_mandir}/man*/*
 %{_prefix}/X11R6/man/man*/*
 %attr(755,root,root) %{_prefix}/X11R6/bin/*
 %attr(755,root,root) %{_bindir}/*
