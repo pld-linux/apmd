@@ -20,20 +20,23 @@ Summary(uk):	õÔÉÌ¦ÔÉ ÄÌÑ Advanced Power Management (APM) BIOS × ÌÁÐÔÏÐÁÈ
 Summary(zh_CN):	ÓÃÓÚÏ¥ÉÏÐÍ¼ÆËã»úµÄ¸ß¼¶µçÔ´¹ÜÀí (APM) BIOS ÊµÓÃ³ÌÐò¡£
 Name:		apmd
 Version:	3.0.2
-Release:	3
+Release:	13
+Epoch:		1
 License:	GPL
 Group:		Applications/System
 Source0:	http://www.worldvisions.ca/~apenwarr/apmd/%{name}-%{version}.tar.gz
+# Source0-md5:	23ce275766441c59b6b47c002f9098eb
 Source1:	%{name}.init
 Patch0:		%{name}-security.patch
 Patch1:		%{name}-spinlock.patch
 URL:		http://www.worldvisions.ca/~apenwarr/apmd/
 BuildRequires:	XFree86-devel
-Prereq:		/sbin/chkconfig
-Obsoletes:	acpid
+PreReq:		rc-scripts
+Requires(post,preun):	/sbin/chkconfig
 Requires:	procps
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	acpid
 ExclusiveArch:	%{ix86} ppc
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Advanced Power Management daemon and utilities allows you to watch
@@ -113,7 +116,7 @@ brukere når batterinivået er lavt og/eller stenge ned PCMCIA
 kontaktene før maskinen går i dvale.
 
 %description -l pl
-Demon zadz±dzania energi± APM (Advanced Power Management) wraz z
+Demon zarz±dzania energi± APM (Advanced Power Management) wraz z
 programami pomocniczymi. Dziêki nim mo¿liwe jest monitorowanie stanu
 zasilania Twojego notebooka i ostrzeganie wszystkich u¿ytkowników o
 koñcz±cej siê baterii, jak równie¿ automatyczne reagowanie na zmiany.
@@ -170,7 +173,7 @@ Summary(es):	Archivos de inclusión y bibliotecas para apmd en versión estática
 Summary(pl):	Pliki nag³ówkowe i biblioteka statyczna do tworzenia aplikacji korzystaj±cych z APM
 Summary(pt_BR):	Arquivos de inclusão e bibliotecas para o apmd em versão estática
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+#Requires:	%{name} = %{version}
 
 %description devel
 Header files necessary for developing APM applications.
@@ -203,13 +206,20 @@ XFree86.
 %patch0 -p1
 
 %ifarch ppc
-%patch1 -p1 
-%endif 
+%patch1 -p1
+%endif
 
 %build
-%{__make} CFLAGS="%{rpmcflags}" LDFLAGS="%{rpmldflags}" APMD_PROXY_DIR=%{_sbindir}
+%{__make} \
+	CFLAGS="%{rpmcflags}" \
+	LDFLAGS="%{rpmldflags}" \
+	APMD_PROXY_DIR=%{_sbindir}
+
 %{__make} -C xbattery clean
-%{__make} CCOPTIONS="%{rpmcflags}" LOCAL_LDFLAGS="%{rpmldflags}" -C xbattery
+
+%{__make} -C xbattery \
+	CCOPTIONS="%{rpmcflags}" \
+	LOCAL_LDFLAGS="%{rpmldflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -222,22 +232,20 @@ install apmd apmd_proxy $RPM_BUILD_ROOT%{_sbindir}
 
 install xapm $RPM_BUILD_ROOT%{_prefix}/X11R6/bin
 
-install apm.1 apmsleep.1 $RPM_BUILD_ROOT%{_mandir}/man1/
-install apmd.8 $RPM_BUILD_ROOT%{_mandir}/man8/
+install apm.1 apmsleep.1 $RPM_BUILD_ROOT%{_mandir}/man1
+install apmd.8 $RPM_BUILD_ROOT%{_mandir}/man8
 install xapm.1 $RPM_BUILD_ROOT%{_prefix}/X11R6/man/man1/xapm.1x
 install xbattery/xbattery.man $RPM_BUILD_ROOT%{_prefix}/X11R6/man/man1/xbattery.1x
 
 install libapm.a $RPM_BUILD_ROOT%{_libdir}
 install apm.h $RPM_BUILD_ROOT%{_includedir}
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d/apmd
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/apmd
 install xbattery/xbattery $RPM_BUILD_ROOT%{_prefix}/X11R6/bin
 
-cat << EOF > $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/apmd
+cat << EOF > $RPM_BUILD_ROOT/etc/sysconfig/apmd
 APMD_OPTIONS="-p 10 -w 5 -W -P %{_sbindir}/apmd_proxy"
 EOF
-
-gzip -9nf README README.transfer ChangeLog ANNOUNCE
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -260,7 +268,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc README README.transfer ChangeLog ANNOUNCE
 %{_mandir}/man*/*
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_sbindir}/*
