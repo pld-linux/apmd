@@ -31,11 +31,12 @@ Patch0:		%{name}-security.patch
 Patch1:		%{name}-spinlock.patch
 URL:		http://www.worldvisions.ca/~apenwarr/apmd/
 BuildRequires:	XFree86-devel
-Prereq:		/sbin/chkconfig
-Obsoletes:	acpid
+PreReq:		rc-scripts
+Requires(post,preun):	/sbin/chkconfig
 Requires:	procps
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	acpid
 ExclusiveArch:	%{ix86} ppc
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Advanced Power Management daemon and utilities allows you to watch
@@ -209,9 +210,16 @@ XFree86.
 %endif 
 
 %build
-%{__make} CFLAGS="%{rpmcflags}" LDFLAGS="%{rpmldflags}" APMD_PROXY_DIR=%{_sbindir}
+%{__make} \
+	CFLAGS="%{rpmcflags}" \
+	LDFLAGS="%{rpmldflags}" \
+	APMD_PROXY_DIR=%{_sbindir}
+
 %{__make} -C xbattery clean
-%{__make} CCOPTIONS="%{rpmcflags}" LOCAL_LDFLAGS="%{rpmldflags}" -C xbattery
+
+%{__make} -C xbattery \
+	CCOPTIONS="%{rpmcflags}" \
+	LOCAL_LDFLAGS="%{rpmldflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -224,8 +232,8 @@ install apmd apmd_proxy $RPM_BUILD_ROOT%{_sbindir}
 
 install xapm $RPM_BUILD_ROOT%{_prefix}/X11R6/bin
 
-install apm.1 apmsleep.1 $RPM_BUILD_ROOT%{_mandir}/man1/
-install apmd.8 $RPM_BUILD_ROOT%{_mandir}/man8/
+install apm.1 apmsleep.1 $RPM_BUILD_ROOT%{_mandir}/man1
+install apmd.8 $RPM_BUILD_ROOT%{_mandir}/man8
 install xapm.1 $RPM_BUILD_ROOT%{_prefix}/X11R6/man/man1/xapm.1x
 install xbattery/xbattery.man $RPM_BUILD_ROOT%{_prefix}/X11R6/man/man1/xbattery.1x
 
