@@ -71,8 +71,7 @@ in den Suspend-Modus schaltet.
 %description -l es
 Utilitarios y servidor para gestión avanzada de energía (APM).
 Verifica la batería de tu notebook y avisa a los usuarios cuando la
-carga es poca. Fue adicionado un patch no oficial para parar los
-enchufes PCMCIA antes de una suspensión de energía.
+carga es poca.
 
 %description -l fr
 APMD est un ensemble de programmes permettant de contrôler le démon
