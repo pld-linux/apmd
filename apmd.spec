@@ -204,10 +204,7 @@ XFree86.
 %prep
 %setup -q -n apmd
 %patch0 -p1
-
-%ifarch ppc
 %patch1 -p1
-%endif
 
 %build
 %{__make} \
