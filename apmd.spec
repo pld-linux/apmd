@@ -2,8 +2,7 @@ Summary:	Advanced Power Management (APM) utilities for notebooks.
 Summary(pl):	Obs³uga zarz±dzania enerig± (APM) dla notebooków.
 Name:		apmd
 Version:	3.0
-Release:	2
-Epoch:		1
+Release:	3
 License:	GPL
 Group:		Utilities/System
 Group(pl):	Narzêdzia/System
@@ -26,6 +25,41 @@ Demon zadz±dzania energi± APM (Advanced Power Management) wraz z
 programami pomocniczymi. Dziêki nim mo¿liwe jest monitorowanie stanu
 zasilania Twojego notebooka i ostrzeganie wszystkich u¿ytkowników o
 koñcz±cej siê baterii, jak równie¿ automatyczne reagowanie na zmiany.
+
+%package devel
+Summary:	Header files for developing APM applications
+Summary(pl):	Pliki nag³ówkowe do tworzenia aplikacji korzystaj±cych z APM
+Group:		Development/Libraries
+Requires:	%{name} = %{version}
+
+%description devel
+Header files necessary for developing APM applications
+
+%description devel -l pl
+Pliki nag³ówkowe niezbêdne do tworzenia aplikacji korzystaj±cych z APM
+
+%package static
+Summary:	APM static libraries
+Summary(pl):	Biblioteki statyczne APM
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}
+
+%description static
+Static libraries for developing APM applications
+
+%description static -l pl
+Biblioteki statyczne do tworzenia aplikacji korzystaj±cych z APM
+
+%package -n xapm
+Summary:	XFree86 APM monitoring and management tool
+Summary(pl):	Narzêdzie do monitorowania i zarz±dzania APMem pod XFree86
+Group:		X11/Utilities/System
+
+%description -n xapm
+xapm is an XFree86 version of console APM client - "apm".
+
+%description -n xapm -l pl
+xapm jest wersj± konsolowego klienta APM - "apm", przenaczon± dla XFree86
 
 %prep
 %setup -q -n apmd
@@ -91,11 +125,17 @@ fi
 %defattr(644,root,root,755)
 %doc ANNOUNCE.gz ChangeLog.gz README.gz README.transfer.gz
 %{_mandir}/man*/*
-%{_prefix}/X11R6/man/man*/*
-%attr(755,root,root) %{_prefix}/X11R6/bin/*
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_sbindir}/*
-%{_includedir}/*
-%{_libdir}/*
 %attr(754,root,root) %{_sysconfdir}/rc.d/init.d/apmd
 %config %{_sysconfdir}/sysconfig/apmd
+
+%files devel
+%{_includedir}/*
+
+%files static
+%{_libdir}/*.a
+
+%files -n xapm
+%{_prefix}/X11R6/man/man*/*
+%attr(755,root,root) %{_prefix}/X11R6/bin/*
