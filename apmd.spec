@@ -20,7 +20,7 @@ Summary(uk):	ı‘…Ã¶‘… ƒÃ— Advanced Power Management (APM) BIOS ◊ Ã¡–‘œ–¡»
 Summary(zh_CN):	”√”⁄œ•…œ–Õº∆À„ª˙µƒ∏ﬂº∂µÁ‘¥π‹¿Ì (APM) BIOS  µ”√≥Ã–Ú°£
 Name:		apmd
 Version:	3.2.1
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Applications/System
@@ -250,9 +250,11 @@ sed -i -e 's#\.\./libapm\.a#-L../.libs -lapm#' xbattery/Makefile
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_includedir},%{_libdir},%{_sbindir}} \
 	$RPM_BUILD_ROOT{%{_mandir}/{man{1,8},fr/man1},/etc/{rc.d/init.d,sysconfig}}
-
-install apm xapm apmsleep on_ac_power xbattery/xbattery $RPM_BUILD_ROOT%{_bindir}
-install apmd apmd_proxy $RPM_BUILD_ROOT%{_sbindir}
+	
+cd .libs
+install apm xapm apmsleep ../on_ac_power ../xbattery/xbattery $RPM_BUILD_ROOT%{_bindir}
+install apmd ../apmd_proxy $RPM_BUILD_ROOT%{_sbindir}
+cd ..
 
 install apm.1 apmsleep.1 on_ac_power.1 xapm.1 $RPM_BUILD_ROOT%{_mandir}/man1
 install apmsleep.fr.1 $RPM_BUILD_ROOT%{_mandir}/fr/man1/apmsleep.1
