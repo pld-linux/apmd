@@ -4,10 +4,11 @@ Name:		apmd
 Version:	3.0
 Release:	6
 License:	GPL
-Group:		Utilities/System
-Group(pl):	Narzêdzia/System
+Group:		Applications/System
+Group(de):	Applikationen/System
+Group(pl):	Aplikacje/System
 Source0:	http://www.worldvisions.ca/~apenwarr/apmd/%{name}-%{version}.tar.gz
-Source1:	apmd.init
+Source1:	%{name}.init
 URL:		http://www.worldvisions.ca/~apenwarr/apmd/
 Requires:	procps
 Prereq:		chkconfig
@@ -30,15 +31,17 @@ koñcz±cej siê baterii, jak równie¿ automatyczne reagowanie na zmiany.
 Summary:	Header files for developing APM applications
 Summary(pl):	Pliki nag³ówkowe do tworzenia aplikacji korzystaj±cych z APM
 Group:		Development/Libraries
-Group(pl):	Programowanie/Biblioteki
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
 %description devel
-Header files necessary for developing APM applications
+Header files necessary for developing APM applications.
 
 %description devel -l pl
-Pliki nag³ówkowe niezbêdne do tworzenia aplikacji korzystaj±cych z APM
+Pliki nag³ówkowe niezbêdne do tworzenia aplikacji korzystaj±cych z
+APM.
 
 %package -n xapm
 Summary:	XFree86 APM monitoring and management tool
@@ -52,21 +55,21 @@ xapm is an XFree86 version of console APM client - "apm".
 
 %description -n xapm -l pl
 xapm jest wersj± konsolowego klienta APM - "apm", przenaczon± dla
-XFree86
+XFree86.
 
 %prep
 %setup -q -n apmd
 
 %build
-%{__make} CFLAGS="$RPM_OPT_FLAGS" LDFLAGS=-s APMD_PROXY_DIR=%{_sbindir}
+%{__make} CFLAGS="%{rpmcflags}" LDFLAGS="%{rpmldflags}" APMD_PROXY_DIR=%{_sbindir}
 %{__make} -C xbattery clean
-%{__make} CCOPTIONS="$RPM_OPT_FLAGS" LOCAL_LDFLAGS="-s" -C xbattery
+%{__make} CCOPTIONS="%{rpmcflags}" LOCAL_LDFLAGS="%{rpmldflags}" -C xbattery
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_includedir},%{_libdir},%{_sbindir}} \
 	$RPM_BUILD_ROOT%{_prefix}/X11R6/{bin,man/man1} \
-	$RPM_BUILD_ROOT{%{_mandir}/man{1,8},/etc/{rc.d/init.d,sysconfig}}
+	$RPM_BUILD_ROOT{%{_mandir}/man{1,8},%{_sysconfdir}/{rc.d/init.d,sysconfig}}
 
 install apm apmsleep tailf on_ac_power $RPM_BUILD_ROOT%{_bindir}
 install apmd apmd_proxy $RPM_BUILD_ROOT%{_sbindir}
@@ -88,9 +91,7 @@ cat << EOF > $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/apmd
 APMD_OPTIONS="-p 10 -w 5 -W -P %{_sbindir}/apmd_proxy"
 EOF
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man*/* \
-	$RPM_BUILD_ROOT%{_prefix}/X11R6/man/man*/* \
-	README README.transfer ChangeLog ANNOUNCE
+gzip -9nf README README.transfer ChangeLog ANNOUNCE
  
 %clean
 rm -rf $RPM_BUILD_ROOT
