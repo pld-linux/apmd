@@ -11,7 +11,7 @@
 . /etc/rc.d/init.d/functions
 
 if [ ! -f /proc/apm ]; then  
-	modprobe apm && nls "No kernel APM support!"; exit 1
+	modprobe apm && echo $(nls "No kernel APM support")'!'; exit 1
 fi
 
 CONFIG=/etc/sysconfig/apmd
