@@ -98,10 +98,20 @@ gzip -9nf README README.transfer ChangeLog ANNOUNCE
 rm -rf $RPM_BUILD_ROOT
 
 %post
-DESC="apmd daemon"; %chkconfig_add
+/sbin/chkconfig --add apmd
+if [ -f /var/lock/subsys/apmd ]; then
+	/etc/rc.d/init.d/apmd restart 1>&2
+else
+	echo "Run \"/etc/rc.d/init.d/apmd start\" to start apmd daemon."
+fi
 
 %preun
-%chkconfig_del
+if [ "$1" = "0" ]; then
+	if [ -f /var/lock/subsys/apmd ]; then
+		/etc/rc.d/init.d/apmd stop 1>&2
+	fi
+	/sbin/chkconfig --del apmd
+fi
 
 %files
 %defattr(644,root,root,755)
