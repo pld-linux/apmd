@@ -1,5 +1,5 @@
-Summary:	Advanced Power Management (APM) utilities for notebooks.
-Summary(pl):	Obs³uga zarz±dzania enerig± (APM) dla notebooków.
+Summary:	Advanced Power Management (APM) utilities for notebooks
+Summary(pl):	Obs³uga zarz±dzania enerig± (APM) dla notebooków
 Name:		apmd
 Version:	3.0
 Release:	4
@@ -63,28 +63,25 @@ make CCOPTIONS="$RPM_OPT_FLAGS" LOCAL_LDFLAGS="-s" -C xbattery
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_prefix}/{bin,include,lib,sbin}
-install -d $RPM_BUILD_ROOT%{_prefix}/X11R6/{bin,man/man1}
-install -d $RPM_BUILD_ROOT%{_mandir}/{man1,man8}
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig
-install apm $RPM_BUILD_ROOT%{_bindir}
-install apmd $RPM_BUILD_ROOT%{_sbindir}
-install apmsleep $RPM_BUILD_ROOT%{_bindir}
-install tailf $RPM_BUILD_ROOT%{_bindir}
-install on_ac_power $RPM_BUILD_ROOT%{_bindir}
+install -d $RPM_BUILD_ROOT%{_bindir},%{_includedir},%{_libdir},%{_sbindir}} \
+	$RPM_BUILD_ROOT%{_prefix}/X11R6/{bin,man/man1}
+	$RPM_BUILD_ROOT{%{_mandir}/man{1,8},/etc/{rc.d/init.d,sysconfig}}
+
+install apm apmsleep tailf on_ac_power $RPM_BUILD_ROOT%{_bindir}
+install apmd apmd_proxy $RPM_BUILD_ROOT%{_sbindir}
+
 install xapm $RPM_BUILD_ROOT%{_prefix}/X11R6/bin
-install apmd_proxy $RPM_BUILD_ROOT%{_sbindir}
-install apm.1 $RPM_BUILD_ROOT%{_mandir}/man1/
+
+install apm.1 apmsleep.1 tailf.1 $RPM_BUILD_ROOT%{_mandir}/man1/
 install apmd.8 $RPM_BUILD_ROOT%{_mandir}/man8/
 install xapm.1 $RPM_BUILD_ROOT%{_prefix}/X11R6/man/man1/xapm.1x
-install tailf.1 $RPM_BUILD_ROOT%{_mandir}/man1/
-install apmsleep.1 $RPM_BUILD_ROOT%{_mandir}/man1
+install xbattery/xbattery.man $RPM_BUILD_ROOT%{_prefix}/X11R6/man/man1/xbattery.1x
+
 install libapm.a $RPM_BUILD_ROOT%{_libdir}
 install apm.h $RPM_BUILD_ROOT%{_includedir}
+
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d/apmd
 install xbattery/xbattery $RPM_BUILD_ROOT%{_prefix}/X11R6/bin
-install xbattery/xbattery.man $RPM_BUILD_ROOT%{_prefix}/X11R6/man/man1/xbattery.1x
 
 cat << EOF > $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/apmd
 APMD_OPTIONS="-p 10 -w 5 -W -P %{_sbindir}/apmd_proxy"
@@ -100,7 +97,7 @@ rm -rf $RPM_BUILD_ROOT
 %post
 /sbin/chkconfig --add apmd
 if [ -f /var/lock/subsys/apmd ]; then
-	%{_sysconfdir}/rc.d/init.d/apmd restart 1>&2
+	/etc/rc.d/init.d/apmd restart 1>&2
 else
 	echo "Run \"/etc/rc.d/init.d/apmd start\" to start apmd daemon."
 fi
@@ -119,8 +116,8 @@ fi
 %{_mandir}/man*/*
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_sbindir}/*
-%attr(754,root,root) %{_sysconfdir}/rc.d/init.d/apmd
-%config %{_sysconfdir}/sysconfig/apmd
+%attr(754,root,root) /etc/rc.d/init.d/apmd
+%config(noreplace) /etc/sysconfig/apmd
 
 %files devel
 %defattr(644,root,root,755)
