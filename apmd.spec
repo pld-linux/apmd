@@ -19,16 +19,14 @@ Summary(sv):	Verktyg fˆr styrning av sp‰nningshantering (APM) i b‰rbara datorer
 Summary(uk):	ı‘…Ã¶‘… ƒÃ— Advanced Power Management (APM) BIOS ◊ Ã¡–‘œ–¡»
 Summary(zh_CN):	”√”⁄œ•…œ–Õº∆À„ª˙µƒ∏ﬂº∂µÁ‘¥π‹¿Ì (APM) BIOS  µ”√≥Ã–Ú°£
 Name:		apmd
-Version:	3.0.2
-Release:	14
+Version:	3.2.1
+Release:	0.1
 Epoch:		1
 License:	GPL
 Group:		Applications/System
-Source0:	http://www.worldvisions.ca/~apenwarr/apmd/%{name}-%{version}.tar.gz
-# Source0-md5:	23ce275766441c59b6b47c002f9098eb
+Source0:	ftp://ftp.debian.org/debian/pool/main/a/apmd/%{name}_%{version}.orig.tar.gz
+# Source0-md5:	99523e709f5033d3d64ad38d3954f7fc
 Source1:	%{name}.init
-Patch0:		%{name}-security.patch
-Patch1:		%{name}-spinlock.patch
 URL:		http://www.worldvisions.ca/~apenwarr/apmd/
 BuildRequires:	XFree86-devel
 PreReq:		rc-scripts
@@ -202,12 +200,11 @@ xapm jest wersj± konsolowego klienta APM - "apm", przenaczon± dla
 XFree86.
 
 %prep
-%setup -q -n apmd
-%patch0 -p1
-%patch1 -p1
+%setup -q -n %{name}-%{version}.orig
 
 %build
 %{__make} \
+	LIBTOOL="libtool --quiet --tag=CXX" \
 	CFLAGS="%{rpmcflags}" \
 	LDFLAGS="%{rpmldflags}" \
 	APMD_PROXY_DIR=%{_sbindir}
