@@ -98,10 +98,10 @@ gzip -9nf README README.transfer ChangeLog ANNOUNCE
 rm -rf $RPM_BUILD_ROOT
 
 %post
-DESC="apmd daemon"; %chkconfig_post
+DESC="apmd daemon"; %chkconfig_add
 
 %preun
-%chkconfig_preun
+%chkconfig_del
 
 %files
 %defattr(644,root,root,755)
