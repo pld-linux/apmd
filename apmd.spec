@@ -170,9 +170,9 @@ APMD
 APMD 还可以在暂挂前关闭 PCMCIA 插槽。
 
 %package libs
-Summary:        libapm library
+Summary:	libapm library
 Summary(pl):	Biblioteka libapm
-Group:          Libraries
+Group:		Libraries
 
 %description libs
 libapm library.
