@@ -13,7 +13,7 @@ URL:		http://www.worldvisions.ca/~apenwarr/apmd/
 Requires:	procps
 Prereq:		chkconfig
 BuildRequires:	XFree86-devel
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ExclusiveArch:	%{ix86}
 
 %description
