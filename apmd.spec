@@ -31,10 +31,10 @@ URL:		http://www.worldvisions.ca/~apenwarr/apmd/
 BuildRequires:	XFree86-devel
 BuildRequires:	libtool
 BuildRequires:	sed >= 4.0
-PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	procps
+Requires:	rc-scripts
 Obsoletes:	acpid
 Obsoletes:	poweracpid
 ExclusiveArch:	%{ix86} ppc
@@ -250,7 +250,7 @@ sed -i -e 's#\.\./libapm\.a#-L../.libs -lapm#' xbattery/Makefile
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_includedir},%{_libdir},%{_sbindir}} \
 	$RPM_BUILD_ROOT{%{_mandir}/{man{1,8},fr/man1},/etc/{rc.d/init.d,sysconfig}}
-	
+
 cd .libs
 install apm xapm apmsleep ../on_ac_power ../xbattery/xbattery $RPM_BUILD_ROOT%{_bindir}
 install apmd ../apmd_proxy $RPM_BUILD_ROOT%{_sbindir}
@@ -301,7 +301,7 @@ fi
 %attr(755,root,root) %{_bindir}/on_ac_power
 %attr(755,root,root) %{_sbindir}/*
 %attr(754,root,root) /etc/rc.d/init.d/apmd
-%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/apmd
+%config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/apmd
 %{_mandir}/man1/apm.1*
 %{_mandir}/man1/apmsleep.1*
 %{_mandir}/man1/on_ac_power.1*
