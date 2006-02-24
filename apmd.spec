@@ -30,6 +30,7 @@ Source1:	%{name}.init
 URL:		http://www.worldvisions.ca/~apenwarr/apmd/
 BuildRequires:	XFree86-devel
 BuildRequires:	libtool
+BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sed >= 4.0
 Requires(post,preun):	/sbin/chkconfig
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
@@ -276,17 +277,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/chkconfig --add apmd
-if [ -f /var/lock/subsys/apmd ]; then
-	/etc/rc.d/init.d/apmd restart 1>&2
-else
-	echo "Run \"/etc/rc.d/init.d/apmd start\" to start apmd daemon."
-fi
+%service apmd restart "apmd daemon"
 
 %preun
 if [ "$1" = "0" ]; then
-	if [ -f /var/lock/subsys/apmd ]; then
-		/etc/rc.d/init.d/apmd stop 1>&2
-	fi
+	%service apmd stop
 	/sbin/chkconfig --del apmd
 fi
 
