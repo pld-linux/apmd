@@ -20,13 +20,14 @@ Summary(uk):	ı‘…Ã¶‘… ƒÃ— Advanced Power Management (APM) BIOS ◊ Ã¡–‘œ–¡»
 Summary(zh_CN):	”√”⁄œ•…œ–Õº∆À„ª˙µƒ∏ﬂº∂µÁ‘¥π‹¿Ì (APM) BIOS  µ”√≥Ã–Ú°£
 Name:		apmd
 Version:	3.2.2
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.debian.org/debian/pool/main/a/apmd/%{name}_%{version}.orig.tar.gz
 # Source0-md5:	b1e6309e8331e0f4e6efd311c2d97fa8
 Source1:	%{name}.init
+Patch0:		%{name}-libtool.patch
 URL:		http://www.worldvisions.ca/~apenwarr/apmd/
 BuildRequires:	XFree86-devel
 BuildRequires:	libtool
@@ -229,6 +230,7 @@ XFree86.
 
 %prep
 %setup -q -n %{name}-%{version}.orig
+%patch0 -p1
 
 sed -i -e 's#-I/usr/src/linux.*/include##g' Makefile
 sed -i -e 's#\.\./libapm\.a#-L../.libs -lapm#' xbattery/Makefile
