@@ -1,23 +1,23 @@
 Summary:	Advanced Power Management (APM) utilities for notebooks
-Summary(cs):	Nástroje pro APM (Advanced Power Management) BIOS na laptopech
-Summary(da):	Avanceret strømstyring (APM) bios værktøjer for bærbare
-Summary(de):	Advanced Power Management (APM) BIOS-Dienstprogramme für Laptops
-Summary(es):	Utilitarios para APM (Gestión Avanzado de Energía) BIOS para portátiles
-Summary(fr):	Utilitaires BIOS de gestion avancée de l'énergie (APM) pour les ordinateurs portables
-Summary(id):	Advanced Power Management (APM) BIOS utilities untuk laptop
-Summary(is):	Tól sem stjórnar orkunotkun fartölvu (Advanced Power Management)
-Summary(it):	Utility APM (Advanced Power Management) BIOS per laptop
-Summary(ja):	¥é¥Ã¥×¥È¥Ã¥×ÍÑ¤Î APM (Advanced Power Management) ¥æ¡¼¥Æ¥£¥ê¥Æ¥£
-Summary(nb):	Advanced Power Management (APM) BIOS verktøy for bærbare
-Summary(pl):	Obs³uga zarz±dzania enerig± (APM) dla notebooków
-Summary(pt):	Utilitários Advanced Power Management (APM) para portáteis
-Summary(pt_BR):	Utilitários para APM (Gerenciamento Avancado de Energia)
-Summary(ru):	õÔÉÌÉÔÙ ÄÌÑ Advanced Power Management (APM) BIOS × ÌÁĞÔÏĞÁÈ
-Summary(sk):	Pomôcky pre Advanced Power Management (APM) BIOS laptopov
-Summary(sl):	Pripomoèki za prenosnike z Advanced Power Management (APM)
-Summary(sv):	Verktyg för styrning av spänningshantering (APM) i bärbara datorer
-Summary(uk):	õÔÉÌ¦ÔÉ ÄÌÑ Advanced Power Management (APM) BIOS × ÌÁĞÔÏĞÁÈ
-Summary(zh_CN):	ÓÃÓÚÏ¥ÉÏĞÍ¼ÆËã»úµÄ¸ß¼¶µçÔ´¹ÜÀí (APM) BIOS ÊµÓÃ³ÌĞò¡£
+Summary(cs.UTF-8):   NÃ¡stroje pro APM (Advanced Power Management) BIOS na laptopech
+Summary(da.UTF-8):   Avanceret strÃ¸mstyring (APM) bios vÃ¦rktÃ¸jer for bÃ¦rbare
+Summary(de.UTF-8):   Advanced Power Management (APM) BIOS-Dienstprogramme fÃ¼r Laptops
+Summary(es.UTF-8):   Utilitarios para APM (GestiÃ³n Avanzado de EnergÃ­a) BIOS para portÃ¡tiles
+Summary(fr.UTF-8):   Utilitaires BIOS de gestion avancÃ©e de l'Ã©nergie (APM) pour les ordinateurs portables
+Summary(id.UTF-8):   Advanced Power Management (APM) BIOS utilities untuk laptop
+Summary(is.UTF-8):   TÃ³l sem stjÃ³rnar orkunotkun fartÃ¶lvu (Advanced Power Management)
+Summary(it.UTF-8):   Utility APM (Advanced Power Management) BIOS per laptop
+Summary(ja.UTF-8):   ãƒ©ãƒƒãƒ—ãƒˆãƒƒãƒ—ç”¨ã® APM (Advanced Power Management) ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£
+Summary(nb.UTF-8):   Advanced Power Management (APM) BIOS verktÃ¸y for bÃ¦rbare
+Summary(pl.UTF-8):   ObsÅ‚uga zarzÄ…dzania enerigÄ… (APM) dla notebookÃ³w
+Summary(pt.UTF-8):   UtilitÃ¡rios Advanced Power Management (APM) para portÃ¡teis
+Summary(pt_BR.UTF-8):   UtilitÃ¡rios para APM (Gerenciamento Avancado de Energia)
+Summary(ru.UTF-8):   Ğ£Ñ‚Ğ¸Ğ»Ğ¸Ñ‚Ñ‹ Ğ´Ğ»Ñ Advanced Power Management (APM) BIOS Ğ² Ğ»Ğ°Ğ¿Ñ‚Ğ¾Ğ¿Ğ°Ñ…
+Summary(sk.UTF-8):   PomÃ´cky pre Advanced Power Management (APM) BIOS laptopov
+Summary(sl.UTF-8):   PripomoÄki za prenosnike z Advanced Power Management (APM)
+Summary(sv.UTF-8):   Verktyg fÃ¶r styrning av spÃ¤nningshantering (APM) i bÃ¤rbara datorer
+Summary(uk.UTF-8):   Ğ£Ñ‚Ğ¸Ğ»Ñ–Ñ‚Ğ¸ Ğ´Ğ»Ñ Advanced Power Management (APM) BIOS Ğ² Ğ»Ğ°Ğ¿Ñ‚Ğ¾Ğ¿Ğ°Ñ…
+Summary(zh_CN.UTF-8):   ç”¨äºè†ä¸Šå‹è®¡ç®—æœºçš„é«˜çº§ç”µæºç®¡ç† (APM) BIOS å®ç”¨ç¨‹åºã€‚
 Name:		apmd
 Version:	3.2.2
 Release:	3
@@ -47,42 +47,42 @@ Advanced Power Management daemon and utilities allows you to watch
 your notebook's power state and warn all users when the battery is
 low. It can also handle some power state events automatically.
 
-%description -l cs
-APMD je sada programù pro ovládání démona pro pokroèilou správu
-energie (Advanced Power Management - APM) vèetnì pomocnıch programù,
-které jsou k dispozici na vìt¹inì moderních pøenosnıch poèítaèù. APMD
-umí sledovat stav baterie notebooku a varovat u¾ivatele pøi poklesu
-jejího napìtí. APMD je také schopné vypnout PCMCIA sokety pøed uspáním
-poèítaèe.
+%description -l cs.UTF-8
+APMD je sada programÅ¯ pro ovlÃ¡dÃ¡nÃ­ dÃ©mona pro pokroÄilou sprÃ¡vu
+energie (Advanced Power Management - APM) vÄetnÄ› pomocnÃ½ch programÅ¯,
+kterÃ© jsou k dispozici na vÄ›tÅ¡inÄ› modernÃ­ch pÅ™enosnÃ½ch poÄÃ­taÄÅ¯. APMD
+umÃ­ sledovat stav baterie notebooku a varovat uÅ¾ivatele pÅ™i poklesu
+jejÃ­ho napÄ›tÃ­. APMD je takÃ© schopnÃ© vypnout PCMCIA sokety pÅ™ed uspÃ¡nÃ­m
+poÄÃ­taÄe.
 
-%description -l da
-APMD er et sæt programmer for kontrol af Advanced Power Management
-(APM) dæmonen og værktøjer som findes i de fleste moderne bærbare
-datamaskiner. APMD kan overvåge batteriet på din bærbare og advare dig
-når batteriniveauet er lavt og/eller lukke ned for PCMCIA kortene før
-maskinen går i dvale.
+%description -l da.UTF-8
+APMD er et sÃ¦t programmer for kontrol af Advanced Power Management
+(APM) dÃ¦monen og vÃ¦rktÃ¸jer som findes i de fleste moderne bÃ¦rbare
+datamaskiner. APMD kan overvÃ¥ge batteriet pÃ¥ din bÃ¦rbare og advare dig
+nÃ¥r batteriniveauet er lavt og/eller lukke ned for PCMCIA kortene fÃ¸r
+maskinen gÃ¥r i dvale.
 
-%description -l de
-APMD enthält Programme zur Steuerung des Advanced Power Management
+%description -l de.UTF-8
+APMD enthÃ¤lt Programme zur Steuerung des Advanced Power Management
 (APM)-Daemons und der Dienstprogramme, die in den meisten modernen
-Laptops verwendet werden. APMD kann den Akku von Notebooks überwachen
-und Benutzer über eine zu geringe Ladung informieren. APMD kann
-außerdem die PCMCIA-Schnittstellen herunterfahren, bevor der Computer
+Laptops verwendet werden. APMD kann den Akku von Notebooks Ã¼berwachen
+und Benutzer Ã¼ber eine zu geringe Ladung informieren. APMD kann
+auÃŸerdem die PCMCIA-Schnittstellen herunterfahren, bevor der Computer
 in den Suspend-Modus schaltet.
 
-%description -l es
-Utilitarios y servidor para gestión avanzada de energía (APM).
-Verifica la batería de tu notebook y avisa a los usuarios cuando la
+%description -l es.UTF-8
+Utilitarios y servidor para gestiÃ³n avanzada de energÃ­a (APM).
+Verifica la baterÃ­a de tu notebook y avisa a los usuarios cuando la
 carga es poca.
 
-%description -l fr
-APMD est un ensemble de programmes permettant de contrôler le démon
-APM (Advanced Power Management) et les utilitaires installés sur la
-plupart des ordinateurs portables récents. APMD peut surveiller la
+%description -l fr.UTF-8
+APMD est un ensemble de programmes permettant de contrÃ´ler le dÃ©mon
+APM (Advanced Power Management) et les utilitaires installÃ©s sur la
+plupart des ordinateurs portables rÃ©cents. APMD peut surveiller la
 batterie de votre portable, vous avertir lorsqu'elle est faible ou
-arrêter les supports PCMCIA avant l'arrêt de votre ordinateur.
+arrÃªter les supports PCMCIA avant l'arrÃªt de votre ordinateur.
 
-%description -l id
+%description -l id.UTF-8
 APMD adalah sekumpulan program yang melakukan kontrol terhadap
 Advanced Power Management, deamon dan utility yang dapat ditemukan
 hampir di semua laptop moderen. APMD dapat mengawasi penggunaan
@@ -90,133 +90,133 @@ baterai pada notebook, dan memberikan peringatan kepada pengguna bila
 tenaga bateri rendah. APMD juga mampu melakukan shut down socket
 PCMCIA sebelum suspend.
 
-%description -l is
-APMD er safn forrita til ağ stjórna APM ( Advanced Power Management -
-stıring rafnotkunar ) stıringum sem er ağ finna í flestum fartölvum.
-APMD getur fylgst meğ ástandi rafhlöğunnar og látiğ notendur vita
-şegar rafmagn fer ağ şrjóta. APMD getur einnig slökkt á PCMCIA
-şjónustum áğur en slökkt er á vélinni.
+%description -l is.UTF-8
+APMD er safn forrita til aÃ° stjÃ³rna APM ( Advanced Power Management -
+stÃ½ring rafnotkunar ) stÃ½ringum sem er aÃ° finna Ã­ flestum fartÃ¶lvum.
+APMD getur fylgst meÃ° Ã¡standi rafhlÃ¶Ã°unnar og lÃ¡tiÃ° notendur vita
+Ã¾egar rafmagn fer aÃ° Ã¾rjÃ³ta. APMD getur einnig slÃ¶kkt Ã¡ PCMCIA
+Ã¾jÃ³nustum Ã¡Ã°ur en slÃ¶kkt er Ã¡ vÃ©linni.
 
-%description -l it
-APDM è un set di programmi per il controllo del demone e delle utility
+%description -l it.UTF-8
+APDM Ã¨ un set di programmi per il controllo del demone e delle utility
 di Advanced Power Management (APM) presenti nella maggior parte dei
 laptop moderni. APDM consente di controllare la batteria del portatile
-e di avvisare gli utenti quando è quasi scarica e/o di chiudere gli
+e di avvisare gli utenti quando Ã¨ quasi scarica e/o di chiudere gli
 attacchi del PCMCIA prima di un'interruzione.
 
-%description -l ja
-APMD ¤ÏºÇ¶á¤Î¥é¥Ã¥×¥È¥Ã¥×¥³¥ó¥Ô¥å¡¼¥¿¤ÇÍÑ¤¤¤é¤ì¤ë Advanced Power
-Management (APM) ¥Ç¡¼¥â¥ó¤È¥æ¡¼¥Æ¥£¥ê¥Æ¥£¤òÀ©¸æ¤¹¤ë¤¿¤á¤Î¥×¥í¥°¥é¥à
-¥»¥Ã¥È¤Ç¤¹¡£ APMD ¤Ï¥Î¡¼¥È¥Ö¥Ã¥¯¤Î¥Ğ¥Ã¥Æ¥ê¤ò´Æ»ë¤·¡¢ÍÆÎÌ¤¬¾¯¤Ê¤¯
-¤Ê¤ë¤È·Ù¹ğ¤·¤¿¤ê¡¢¥µ¥¹¥Ú¥ó¥É¥â¡¼¥É¤ËÀÚ¤êÂØ¤ï¤ëÁ°¤Ë PCMCIA ¤ò
-¥·¥ã¥Ã¥È¥À¥¦¥ó¤·¤¿¤ê¤·¤Ş¤¹¡£
+%description -l ja.UTF-8
+APMD ã¯æœ€è¿‘ã®ãƒ©ãƒƒãƒ—ãƒˆãƒƒãƒ—ã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿ã§ç”¨ã„ã‚‰ã‚Œã‚‹ Advanced Power
+Management (APM) ãƒ‡ãƒ¼ãƒ¢ãƒ³ã¨ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã‚’åˆ¶å¾¡ã™ã‚‹ãŸã‚ã®ãƒ—ãƒ­ã‚°ãƒ©ãƒ 
+ã‚»ãƒƒãƒˆã§ã™ã€‚ APMD ã¯ãƒãƒ¼ãƒˆãƒ–ãƒƒã‚¯ã®ãƒãƒƒãƒ†ãƒªã‚’ç›£è¦–ã—ã€å®¹é‡ãŒå°‘ãªã
+ãªã‚‹ã¨è­¦å‘Šã—ãŸã‚Šã€ã‚µã‚¹ãƒšãƒ³ãƒ‰ãƒ¢ãƒ¼ãƒ‰ã«åˆ‡ã‚Šæ›¿ã‚ã‚‹å‰ã« PCMCIA ã‚’
+ã‚·ãƒ£ãƒƒãƒˆãƒ€ã‚¦ãƒ³ã—ãŸã‚Šã—ã¾ã™ã€‚
 
-%description -l nb
+%description -l nb.UTF-8
 APMD er et sett programmer for kontroll av Advanced Power Management
-(APM) daemonen og verktøy som finnes i de fleste moderne bærbare
-datamaskiner. APMD kan overvåke batteriet på din bærbare og advare deg
-brukere når batterinivået er lavt og/eller stenge ned PCMCIA
-kontaktene før maskinen går i dvale.
+(APM) daemonen og verktÃ¸y som finnes i de fleste moderne bÃ¦rbare
+datamaskiner. APMD kan overvÃ¥ke batteriet pÃ¥ din bÃ¦rbare og advare deg
+brukere nÃ¥r batterinivÃ¥et er lavt og/eller stenge ned PCMCIA
+kontaktene fÃ¸r maskinen gÃ¥r i dvale.
 
-%description -l pl
-Demon zarz±dzania energi± APM (Advanced Power Management) wraz z
-programami pomocniczymi. Dziêki nim mo¿liwe jest monitorowanie stanu
-zasilania Twojego notebooka i ostrzeganie wszystkich u¿ytkowników o
-koñcz±cej siê baterii, jak równie¿ automatyczne reagowanie na zmiany.
+%description -l pl.UTF-8
+Demon zarzÄ…dzania energiÄ… APM (Advanced Power Management) wraz z
+programami pomocniczymi. DziÄ™ki nim moÅ¼liwe jest monitorowanie stanu
+zasilania Twojego notebooka i ostrzeganie wszystkich uÅ¼ytkownikÃ³w o
+koÅ„czÄ…cej siÄ™ baterii, jak rÃ³wnieÅ¼ automatyczne reagowanie na zmiany.
 
-%description -l pt
-O APMD é um conjunto de programas e utilitários para controlar o APM
-(Advanced Power Management ou Gestão de Energia Avançada) existente na
-maioria dos computadores portáteis modernos. O APMD pode vigiar a
-bateria do seu portátil e avisá-lo quando a bateria está em baixo e/ou
+%description -l pt.UTF-8
+O APMD Ã© um conjunto de programas e utilitÃ¡rios para controlar o APM
+(Advanced Power Management ou GestÃ£o de Energia AvanÃ§ada) existente na
+maioria dos computadores portÃ¡teis modernos. O APMD pode vigiar a
+bateria do seu portÃ¡til e avisÃ¡-lo quando a bateria estÃ¡ em baixo e/ou
 desligar os 'sockets' PCMCIA antes de suspender.
 
-%description -l pt_BR
-Utilitários e servidor para gerenciamento avançado de energia (APM).
-Ele verifica a bateria de seu notebook e avisa aos usuários que ele
-está com pouca carga. Foi adicionado um patch nao oficial para parar
+%description -l pt_BR.UTF-8
+UtilitÃ¡rios e servidor para gerenciamento avanÃ§ado de energia (APM).
+Ele verifica a bateria de seu notebook e avisa aos usuÃ¡rios que ele
+estÃ¡ com pouca carga. Foi adicionado um patch nao oficial para parar
 os soquetes PCMCIA antes de uma suspensao de energia.
 
-%description -l ru
-APMD - ÜÔÏ ÎÁÂÏÒ ĞÒÏÇÒÁÍÍ ÄÌÑ ÕĞÒÁ×ÌÅÎÉÑ ÄÅÍÏÎÏÍ APM (Advanced Power
-Management) É ÕÔÉÌÉÔÁÍÉ, ÎÁÈÏÄÑİÉÍÉÓÑ ÎÁ ÂÏÌØÛÉÎÓÔ×Å ÓÏ×ÒÅÍÅÎÎÙÈ
-ĞÏÒÔÁÔÉ×ÎÙÈ ËÏÍĞØÀÔÅÒÏ×. APMD ÍÏÖÅÔ ÓÌÅÄÉÔØ ÚÁ ÓÏÓÔÏÑÎÉÅÍ ÂÁÔÁÒÅÊ
-ĞÏÒÔÁÔÉ×ÎÏÇÏ ËÏÍĞØÀÔÅÒÁ É ĞÒÅÄÕĞÒÅÖÄÁÔØ ĞÏÌØÚÏ×ÁÔÅÌÑ ÏÂ ÉÈ ÒÁÚÒÑÄËÅ.
-ëÒÏÍÅ ÔÏÇÏ, APMD ÍÏÖÅÔ ÏÔËÌÀŞÉÔØ ÒÁÚØÅÍÙ PCMCIA ĞÅÒÅÄ ĞÅÒÅÈÏÄÏÍ ×
-ÒÅÖÉÍ ĞÏÎÉÖÅÎÎÏÇÏ ÜÎÅÒÇÏĞÏÔÒÅÂÌÅÎÉÑ.
+%description -l ru.UTF-8
+APMD - ÑÑ‚Ğ¾ Ğ½Ğ°Ğ±Ğ¾Ñ€ Ğ¿Ñ€Ğ¾Ğ³Ñ€Ğ°Ğ¼Ğ¼ Ğ´Ğ»Ñ ÑƒĞ¿Ñ€Ğ°Ğ²Ğ»ĞµĞ½Ğ¸Ñ Ğ´ĞµĞ¼Ğ¾Ğ½Ğ¾Ğ¼ APM (Advanced Power
+Management) Ğ¸ ÑƒÑ‚Ğ¸Ğ»Ğ¸Ñ‚Ğ°Ğ¼Ğ¸, Ğ½Ğ°Ñ…Ğ¾Ğ´ÑÑ‰Ğ¸Ğ¼Ğ¸ÑÑ Ğ½Ğ° Ğ±Ğ¾Ğ»ÑŒÑˆĞ¸Ğ½ÑÑ‚Ğ²Ğµ ÑĞ¾Ğ²Ñ€ĞµĞ¼ĞµĞ½Ğ½Ñ‹Ñ…
+Ğ¿Ğ¾Ñ€Ñ‚Ğ°Ñ‚Ğ¸Ğ²Ğ½Ñ‹Ñ… ĞºĞ¾Ğ¼Ğ¿ÑŒÑÑ‚ĞµÑ€Ğ¾Ğ². APMD Ğ¼Ğ¾Ğ¶ĞµÑ‚ ÑĞ»ĞµĞ´Ğ¸Ñ‚ÑŒ Ğ·Ğ° ÑĞ¾ÑÑ‚Ğ¾ÑĞ½Ğ¸ĞµĞ¼ Ğ±Ğ°Ñ‚Ğ°Ñ€ĞµĞ¹
+Ğ¿Ğ¾Ñ€Ñ‚Ğ°Ñ‚Ğ¸Ğ²Ğ½Ğ¾Ğ³Ğ¾ ĞºĞ¾Ğ¼Ğ¿ÑŒÑÑ‚ĞµÑ€Ğ° Ğ¸ Ğ¿Ñ€ĞµĞ´ÑƒĞ¿Ñ€ĞµĞ¶Ğ´Ğ°Ñ‚ÑŒ Ğ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»Ñ Ğ¾Ğ± Ğ¸Ñ… Ñ€Ğ°Ğ·Ñ€ÑĞ´ĞºĞµ.
+ĞšÑ€Ğ¾Ğ¼Ğµ Ñ‚Ğ¾Ğ³Ğ¾, APMD Ğ¼Ğ¾Ğ¶ĞµÑ‚ Ğ¾Ñ‚ĞºĞ»ÑÑ‡Ğ¸Ñ‚ÑŒ Ñ€Ğ°Ğ·ÑŒĞµĞ¼Ñ‹ PCMCIA Ğ¿ĞµÑ€ĞµĞ´ Ğ¿ĞµÑ€ĞµÑ…Ğ¾Ğ´Ğ¾Ğ¼ Ğ²
+Ñ€ĞµĞ¶Ğ¸Ğ¼ Ğ¿Ğ¾Ğ½Ğ¸Ğ¶ĞµĞ½Ğ½Ğ¾Ğ³Ğ¾ ÑĞ½ĞµÑ€Ğ³Ğ¾Ğ¿Ğ¾Ñ‚Ñ€ĞµĞ±Ğ»ĞµĞ½Ğ¸Ñ.
 
-%description -l sk
-APMD je sada programov pre riadenie systému APM (Advanced Power
-Management), nachádzajúceho sa vo väè¹ine modernıch prenosnıch
-poèítaèov. APMD je schopnı kontrolova» batériu vá¹ho notebooku a
-varova» pou¾ívateµov, pokiaµ je skoro vybitá. Mô¾e tie¾ odpája» PCMCIA
-sokety pred \"uspaním\"
+%description -l sk.UTF-8
+APMD je sada programov pre riadenie systÃ©mu APM (Advanced Power
+Management), nachÃ¡dzajÃºceho sa vo vÃ¤ÄÅ¡ine modernÃ½ch prenosnÃ½ch
+poÄÃ­taÄov. APMD je schopnÃ½ kontrolovaÅ¥ batÃ©riu vÃ¡Å¡ho notebooku a
+varovaÅ¥ pouÅ¾Ã­vateÄ¾ov, pokiaÄ¾ je skoro vybitÃ¡. MÃ´Å¾e tieÅ¾ odpÃ¡jaÅ¥ PCMCIA
+sokety pred \"uspanÃ­m\"
 
-%description -l sv
-APMD är program för att styra demon och verktyg för strömhantering
-(Advanced Power Management, APM) som finns i de flesta moderna bärbara
-datorer. APMD kan bevaka din bärbaras batteri och varna dig när
-batteriet sinar och/eller stänga av PCMCIA-uttag före suspendering.
+%description -l sv.UTF-8
+APMD Ã¤r program fÃ¶r att styra demon och verktyg fÃ¶r strÃ¶mhantering
+(Advanced Power Management, APM) som finns i de flesta moderna bÃ¤rbara
+datorer. APMD kan bevaka din bÃ¤rbaras batteri och varna dig nÃ¤r
+batteriet sinar och/eller stÃ¤nga av PCMCIA-uttag fÃ¶re suspendering.
 
-%description -l uk
-APMD - ÃÅ ÎÁÂ¦Ò ĞÒÏÇÒÁÍ ÄÌÑ ËÅÒÕ×ÁÎÎÑ ÄÅÍÏÎÏÍ Advanced Power
-Management. APMD ÍÏÖÅ ÓÌ¦ÄËÕ×ÁÔÉ ÚÁ ÂÁÔÁÒÅÑÍÉ ÷ÁÛÏÇÏ ÌÁĞÔÏĞÁ ÔÁ
-ĞÏĞÅÒÅÄÖÕ×ÁÔÉ ËÏÒÉÓÔÕ×ÁŞ¦× ĞÒÉ ÒÏÚÒÑÄ¦ ÂÁÔÁÒÅÊ.
+%description -l uk.UTF-8
+APMD - Ñ†Ğµ Ğ½Ğ°Ğ±Ñ–Ñ€ Ğ¿Ñ€Ğ¾Ğ³Ñ€Ğ°Ğ¼ Ğ´Ğ»Ñ ĞºĞµÑ€ÑƒĞ²Ğ°Ğ½Ğ½Ñ Ğ´ĞµĞ¼Ğ¾Ğ½Ğ¾Ğ¼ Advanced Power
+Management. APMD Ğ¼Ğ¾Ğ¶Ğµ ÑĞ»Ñ–Ğ´ĞºÑƒĞ²Ğ°Ñ‚Ğ¸ Ğ·Ğ° Ğ±Ğ°Ñ‚Ğ°Ñ€ĞµÑĞ¼Ğ¸ Ğ’Ğ°ÑˆĞ¾Ğ³Ğ¾ Ğ»Ğ°Ğ¿Ñ‚Ğ¾Ğ¿Ğ° Ñ‚Ğ°
+Ğ¿Ğ¾Ğ¿ĞµÑ€ĞµĞ´Ğ¶ÑƒĞ²Ğ°Ñ‚Ğ¸ ĞºĞ¾Ñ€Ğ¸ÑÑ‚ÑƒĞ²Ğ°Ñ‡Ñ–Ğ² Ğ¿Ñ€Ğ¸ Ñ€Ğ¾Ğ·Ñ€ÑĞ´Ñ– Ğ±Ğ°Ñ‚Ğ°Ñ€ĞµĞ¹.
 
-%description -l zh_CN
+%description -l zh_CN.UTF-8
 APMD
-ÊÇÒ»×é³ÌĞò£¬ÓÃÓÚ¿ØÖÆ×îĞÂÏ¥ÉÏĞÍ¼ÆËã»úÉÏµÄ¸ß¼¶µçÔ´¹ÜÀíºóÌ¨³ÌĞòºÍÊµÓÃ³ÌĞò¡£
+æ˜¯ä¸€ç»„ç¨‹åºï¼Œç”¨äºæ§åˆ¶æœ€æ–°è†ä¸Šå‹è®¡ç®—æœºä¸Šçš„é«˜çº§ç”µæºç®¡ç†åå°ç¨‹åºå’Œå®ç”¨ç¨‹åºã€‚
 APMD
-¿ÉÒÔ¼à¿Ø±Ê¼Ç±¾¼ÆËã»úµÄµç³Ø×´Ì¬£¬²¢ÇÒÔÚµç³ØµçÁ¿²»×ãÊ±ÏòÓÃ»§·¢³ö¾¯¸æ¡£
-APMD »¹¿ÉÒÔÔÚÔİ¹ÒÇ°¹Ø±Õ PCMCIA ²å²Û¡£
+å¯ä»¥ç›‘æ§ç¬”è®°æœ¬è®¡ç®—æœºçš„ç”µæ± çŠ¶æ€ï¼Œå¹¶ä¸”åœ¨ç”µæ± ç”µé‡ä¸è¶³æ—¶å‘ç”¨æˆ·å‘å‡ºè­¦å‘Šã€‚
+APMD è¿˜å¯ä»¥åœ¨æš‚æŒ‚å‰å…³é—­ PCMCIA æ’æ§½ã€‚
 
 %package libs
 Summary:	libapm library
-Summary(pl):	Biblioteka libapm
+Summary(pl.UTF-8):   Biblioteka libapm
 Group:		Libraries
 
 %description libs
 libapm library.
 
-%description libs -l pl
+%description libs -l pl.UTF-8
 Biblioteka libapm.
 
 %package devel
 Summary:	Header files and static library for developing APM applications
-Summary(es):	Archivos de inclusión y bibliotecas para apmd en versión estática
-Summary(pl):	Pliki nag³ówkowe i biblioteka statyczna do tworzenia aplikacji korzystaj±cych z APM
-Summary(pt_BR):	Arquivos de inclusão e bibliotecas para o apmd em versão estática
+Summary(es.UTF-8):   Archivos de inclusiÃ³n y bibliotecas para apmd en versiÃ³n estÃ¡tica
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe i biblioteka statyczna do tworzenia aplikacji korzystajÄ…cych z APM
+Summary(pt_BR.UTF-8):   Arquivos de inclusÃ£o e bibliotecas para o apmd em versÃ£o estÃ¡tica
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 
 %description devel
 Header files necessary for developing APM applications.
 
-%description devel -l es
-Archivos de inclusión y bibliotecas para apmd en versión estática
+%description devel -l es.UTF-8
+Archivos de inclusiÃ³n y bibliotecas para apmd en versiÃ³n estÃ¡tica
 
-%description devel -l pl
-Pliki nag³ówkowe niezbêdne do tworzenia aplikacji korzystaj±cych z
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe niezbÄ™dne do tworzenia aplikacji korzystajÄ…cych z
 APM.
 
-%description devel -l pt_BR
-Arquivos de inclusão e bibliotecas para o apmd em versão estática
+%description devel -l pt_BR.UTF-8
+Arquivos de inclusÃ£o e bibliotecas para o apmd em versÃ£o estÃ¡tica
 
 %package static
 Summary:	Static libapm library
-Summary(pl):	Statyczna biblioteka libapm
+Summary(pl.UTF-8):   Statyczna biblioteka libapm
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 Static libapm library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka libapm.
 
 %package -n xapm
 Summary:	XFree86 APM monitoring and management tool
-Summary(pl):	Narzêdzie do monitorowania i zarz±dzania APMem pod XFree86
+Summary(pl.UTF-8):   NarzÄ™dzie do monitorowania i zarzÄ…dzania APMem pod XFree86
 Group:		X11/Applications
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	XFree86
@@ -224,8 +224,8 @@ Requires:	XFree86
 %description -n xapm
 xapm is an XFree86 version of console APM client - "apm".
 
-%description -n xapm -l pl
-xapm jest wersj± konsolowego klienta APM - "apm", przenaczon± dla
+%description -n xapm -l pl.UTF-8
+xapm jest wersjÄ… konsolowego klienta APM - "apm", przenaczonÄ… dla
 XFree86.
 
 %prep
