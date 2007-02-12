@@ -1,23 +1,23 @@
 Summary:	Advanced Power Management (APM) utilities for notebooks
-Summary(cs.UTF-8):   Nástroje pro APM (Advanced Power Management) BIOS na laptopech
-Summary(da.UTF-8):   Avanceret strømstyring (APM) bios værktøjer for bærbare
-Summary(de.UTF-8):   Advanced Power Management (APM) BIOS-Dienstprogramme für Laptops
-Summary(es.UTF-8):   Utilitarios para APM (Gestión Avanzado de Energía) BIOS para portátiles
-Summary(fr.UTF-8):   Utilitaires BIOS de gestion avancée de l'énergie (APM) pour les ordinateurs portables
-Summary(id.UTF-8):   Advanced Power Management (APM) BIOS utilities untuk laptop
-Summary(is.UTF-8):   Tól sem stjórnar orkunotkun fartölvu (Advanced Power Management)
-Summary(it.UTF-8):   Utility APM (Advanced Power Management) BIOS per laptop
-Summary(ja.UTF-8):   ラップトップ用の APM (Advanced Power Management) ユーティリティ
-Summary(nb.UTF-8):   Advanced Power Management (APM) BIOS verktøy for bærbare
-Summary(pl.UTF-8):   Obsługa zarządzania enerigą (APM) dla notebooków
-Summary(pt.UTF-8):   Utilitários Advanced Power Management (APM) para portáteis
-Summary(pt_BR.UTF-8):   Utilitários para APM (Gerenciamento Avancado de Energia)
-Summary(ru.UTF-8):   Утилиты для Advanced Power Management (APM) BIOS в лаптопах
-Summary(sk.UTF-8):   Pomôcky pre Advanced Power Management (APM) BIOS laptopov
-Summary(sl.UTF-8):   Pripomočki za prenosnike z Advanced Power Management (APM)
-Summary(sv.UTF-8):   Verktyg för styrning av spänningshantering (APM) i bärbara datorer
-Summary(uk.UTF-8):   Утиліти для Advanced Power Management (APM) BIOS в лаптопах
-Summary(zh_CN.UTF-8):   用于膝上型计算机的高级电源管理 (APM) BIOS 实用程序。
+Summary(cs.UTF-8):	Nástroje pro APM (Advanced Power Management) BIOS na laptopech
+Summary(da.UTF-8):	Avanceret strømstyring (APM) bios værktøjer for bærbare
+Summary(de.UTF-8):	Advanced Power Management (APM) BIOS-Dienstprogramme für Laptops
+Summary(es.UTF-8):	Utilitarios para APM (Gestión Avanzado de Energía) BIOS para portátiles
+Summary(fr.UTF-8):	Utilitaires BIOS de gestion avancée de l'énergie (APM) pour les ordinateurs portables
+Summary(id.UTF-8):	Advanced Power Management (APM) BIOS utilities untuk laptop
+Summary(is.UTF-8):	Tól sem stjórnar orkunotkun fartölvu (Advanced Power Management)
+Summary(it.UTF-8):	Utility APM (Advanced Power Management) BIOS per laptop
+Summary(ja.UTF-8):	ラップトップ用の APM (Advanced Power Management) ユーティリティ
+Summary(nb.UTF-8):	Advanced Power Management (APM) BIOS verktøy for bærbare
+Summary(pl.UTF-8):	Obsługa zarządzania enerigą (APM) dla notebooków
+Summary(pt.UTF-8):	Utilitários Advanced Power Management (APM) para portáteis
+Summary(pt_BR.UTF-8):	Utilitários para APM (Gerenciamento Avancado de Energia)
+Summary(ru.UTF-8):	Утилиты для Advanced Power Management (APM) BIOS в лаптопах
+Summary(sk.UTF-8):	Pomôcky pre Advanced Power Management (APM) BIOS laptopov
+Summary(sl.UTF-8):	Pripomočki za prenosnike z Advanced Power Management (APM)
+Summary(sv.UTF-8):	Verktyg för styrning av spänningshantering (APM) i bärbara datorer
+Summary(uk.UTF-8):	Утиліти для Advanced Power Management (APM) BIOS в лаптопах
+Summary(zh_CN.UTF-8):	用于膝上型计算机的高级电源管理 (APM) BIOS 实用程序。
 Name:		apmd
 Version:	3.2.2
 Release:	3
@@ -172,7 +172,7 @@ APMD 还可以在暂挂前关闭 PCMCIA 插槽。
 
 %package libs
 Summary:	libapm library
-Summary(pl.UTF-8):   Biblioteka libapm
+Summary(pl.UTF-8):	Biblioteka libapm
 Group:		Libraries
 
 %description libs
@@ -183,9 +183,9 @@ Biblioteka libapm.
 
 %package devel
 Summary:	Header files and static library for developing APM applications
-Summary(es.UTF-8):   Archivos de inclusión y bibliotecas para apmd en versión estática
-Summary(pl.UTF-8):   Pliki nagłówkowe i biblioteka statyczna do tworzenia aplikacji korzystających z APM
-Summary(pt_BR.UTF-8):   Arquivos de inclusão e bibliotecas para o apmd em versão estática
+Summary(es.UTF-8):	Archivos de inclusión y bibliotecas para apmd en versión estática
+Summary(pl.UTF-8):	Pliki nagłówkowe i biblioteka statyczna do tworzenia aplikacji korzystających z APM
+Summary(pt_BR.UTF-8):	Arquivos de inclusão e bibliotecas para o apmd em versão estática
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 
@@ -204,7 +204,7 @@ Arquivos de inclusão e bibliotecas para o apmd em versão estática
 
 %package static
 Summary:	Static libapm library
-Summary(pl.UTF-8):   Statyczna biblioteka libapm
+Summary(pl.UTF-8):	Statyczna biblioteka libapm
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
@@ -216,7 +216,7 @@ Statyczna biblioteka libapm.
 
 %package -n xapm
 Summary:	XFree86 APM monitoring and management tool
-Summary(pl.UTF-8):   Narzędzie do monitorowania i zarządzania APMem pod XFree86
+Summary(pl.UTF-8):	Narzędzie do monitorowania i zarządzania APMem pod XFree86
 Group:		X11/Applications
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	XFree86
