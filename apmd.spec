@@ -29,7 +29,7 @@ Source0:	ftp://ftp.debian.org/debian/pool/main/a/apmd/%{name}_%{version}.orig.ta
 Source1:	%{name}.init
 Patch0:		%{name}-libtool.patch
 URL:		http://www.worldvisions.ca/~apenwarr/apmd/
-BuildRequires:	XFree86-devel
+BuildRequires:	xorg-lib-libXaw-devel
 BuildRequires:	libtool
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sed >= 4.0
