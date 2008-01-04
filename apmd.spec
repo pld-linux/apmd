@@ -219,7 +219,6 @@ Summary:	XFree86 APM monitoring and management tool
 Summary(pl.UTF-8):	Narzędzie do monitorowania i zarządzania APMem pod XFree86
 Group:		X11/Applications
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
-Requires:	XFree86
 
 %description -n xapm
 xapm is an XFree86 version of console APM client - "apm".
