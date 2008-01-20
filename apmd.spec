@@ -20,7 +20,7 @@ Summary(uk.UTF-8):	Утиліти для Advanced Power Management (APM) BIOS в
 Summary(zh_CN.UTF-8):	用于膝上型计算机的高级电源管理 (APM) BIOS 实用程序。
 Name:		apmd
 Version:	3.2.2
-Release:	4
+Release:	5
 Epoch:		1
 License:	GPL v2+
 Group:		Applications/System
