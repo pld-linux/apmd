@@ -22,7 +22,7 @@ Name:		apmd
 Version:	3.2.2
 Release:	4
 Epoch:		1
-License:	GPL
+License:	GPL v2+
 Group:		Applications/System
 Source0:	ftp://ftp.debian.org/debian/pool/main/a/apmd/%{name}_%{version}.orig.tar.gz
 # Source0-md5:	b1e6309e8331e0f4e6efd311c2d97fa8
@@ -39,7 +39,9 @@ Requires:	procps
 Requires:	rc-scripts
 Conflicts:	acpid
 Obsoletes:	poweracpid
-ExclusiveArch:	%{ix86} ppc
+# APM is specific to 32-bit x86, but Linux provides emulation for some archs:
+# arm, mips (AU1xx0-based), ppc (PMAC, 32-bit only), sh (HP6XX only)
+ExclusiveArch:	%{ix86} arm mips ppc sh
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -173,6 +175,7 @@ APMD 还可以在暂挂前关闭 PCMCIA 插槽。
 %package libs
 Summary:	libapm library
 Summary(pl.UTF-8):	Biblioteka libapm
+License:	LGPL v2+
 Group:		Libraries
 
 %description libs
@@ -186,6 +189,7 @@ Summary:	Header files and static library for developing APM applications
 Summary(es.UTF-8):	Archivos de inclusión y bibliotecas para apmd en versión estática
 Summary(pl.UTF-8):	Pliki nagłówkowe i biblioteka statyczna do tworzenia aplikacji korzystających z APM
 Summary(pt_BR.UTF-8):	Arquivos de inclusão e bibliotecas para o apmd em versão estática
+License:	LGPL v2+
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 
@@ -205,6 +209,7 @@ Arquivos de inclusão e bibliotecas para o apmd em versão estática
 %package static
 Summary:	Static libapm library
 Summary(pl.UTF-8):	Statyczna biblioteka libapm
+License:	LGPL v2+
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
@@ -297,11 +302,11 @@ fi
 %attr(755,root,root) %{_bindir}/apm
 %attr(755,root,root) %{_bindir}/apmsleep
 %attr(755,root,root) %{_bindir}/on_ac_power
-%attr(755,root,root) %{_sbindir}/*
+%attr(755,root,root) %{_sbindir}/apmd
 %attr(754,root,root) /etc/rc.d/init.d/apmd
 %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/apmd
 %dir %{_sysconfdir}/apm
-%attr(755,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/apm/*
+%attr(755,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/apm/apmd_proxy
 %{_mandir}/man1/apm.1*
 %{_mandir}/man1/apmsleep.1*
 %{_mandir}/man1/on_ac_power.1*
@@ -310,19 +315,22 @@ fi
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/*.so.*.*.*
+%attr(755,root,root) %{_libdir}/libapm.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libapm.so.1
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/*.so
-%{_libdir}/*.la
-%{_includedir}/*
+%attr(755,root,root) %{_libdir}/libapm.so
+%{_libdir}/libapm.la
+%{_includedir}/apm.h
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/*.a
+%{_libdir}/libapm.a
 
 %files -n xapm
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/x*
-%{_mandir}/man1/x*
+%attr(755,root,root) %{_bindir}/xapm
+%attr(755,root,root) %{_bindir}/xbattery
+%{_mandir}/man1/xapm.1*
+%{_mandir}/man1/xbattery.1*
