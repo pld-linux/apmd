@@ -20,7 +20,7 @@ Summary(uk.UTF-8):	Утиліти для Advanced Power Management (APM) BIOS в
 Summary(zh_CN.UTF-8):	用于膝上型计算机的高级电源管理 (APM) BIOS 实用程序。
 Name:		apmd
 Version:	3.2.2
-Release:	5
+Release:	6
 Epoch:		1
 License:	GPL v2+
 Group:		Applications/System
@@ -37,8 +37,9 @@ Requires(post,preun):	/sbin/chkconfig
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	procps
 Requires:	rc-scripts
-Conflicts:	acpid
-Obsoletes:	poweracpid
+Provides:	apm-daemon
+Obsoletes:	acpi-daemon
+Obsoletes:	apm-daemon
 # APM is specific to 32-bit x86, but Linux provides emulation for some archs:
 # arm, mips (AU1xx0-based), ppc (PMAC, 32-bit only), sh (HP6XX only)
 ExclusiveArch:	%{ix86} arm mips ppc sh
