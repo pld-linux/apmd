@@ -24,7 +24,7 @@ Release:	7
 Epoch:		1
 License:	GPL v2+
 Group:		Applications/System
-Source0:	ftp://ftp.debian.org/debian/pool/main/a/apmd/%{name}_%{version}.orig.tar.gz
+Source0:	http://ftp.debian.org/debian/pool/main/a/apmd/%{name}_%{version}.orig.tar.gz
 # Source0-md5:	b1e6309e8331e0f4e6efd311c2d97fa8
 Source1:	%{name}.init
 Patch0:		%{name}-libtool.patch
